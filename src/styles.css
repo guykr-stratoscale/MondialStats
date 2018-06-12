@@ -1,4 +1,7 @@
 .App {
   font-family: sans-serif;
-  text-align: center;
+}
+
+.game .date {
+  padding: 0 5px;
 }
