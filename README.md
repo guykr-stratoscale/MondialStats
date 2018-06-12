@@ -1,2 +1,0 @@
-# MondialStats
-Created with CodeSandbox
