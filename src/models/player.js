@@ -1,29 +1,26 @@
-class Bet {
-  constructor({ round, team_a_score, team_b_score, answers = [] } = {}) {
-    this.round = round
-    this.team_a_score = team_a_score
-    this.team_b_score = team_b_score
-    this.answers = answers
-    this.score = 0
-  }
-}
+import { Record, List } from 'immutable'
+import PLAYERS from '../data/players'
 
-export default class Player {
-  static _id = 0
-  static create(...players) {
-    return players.map(player => new Player(player)).reduce((result, t) => {
-      result[t.id] = t
-      return result
-    }, {})
-  }
+const Bet = Record({
+  game: 0,
+  team_a_score: 0,
+  team_b_score: 0,
+  answers: List(),
+})
 
-  constructor({ name, bets = [] } = {}) {
-    this.id = Player._id++
+const Player = Record({
+  id: 0,
+  name: null,
+  bets: List(),
+})
 
-    this.name = name
-    this.bets = bets.map(bet => new Bet(bet))
-    this.score = 0
-  }
-
-  getScore(round) {}
+export const initPlayers = () => {
+  return PLAYERS.map((player, i) => {
+    return new Player({
+      ...player,
+      bets: player.bets.map((bet, gameIndex) => {
+        return new Bet({ ...bet, game: gameIndex })
+      }),
+    })
+  })
 }

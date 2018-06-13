@@ -994,4 +994,4 @@ export const TEAMS = [
   { name: 'Spain', region: 'Europe' },
   { name: 'Sweden', region: 'Europe' },
   { name: 'Switzerland', region: 'Europe' },
-].map(team => ({ ...team, code: (lookup.find(d => d.name === team.name) || {}).code }))
+].map((team, i) => ({ ...team, id: i, code: (lookup.find(d => d.name === team.name) || {}).code }))

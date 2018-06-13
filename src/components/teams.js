@@ -5,8 +5,12 @@ import AppContext from '../context'
 export default function Teams() {
   return (
     <AppContext.Consumer>
-      {({ teams = {} }) => {
-        return Object.values(teams).map(team => <Team team={team} />)
+      {({ teams = [] }) => {
+        return teams.map(team => (
+          <div>
+            <Team team={team} />
+          </div>
+        ))
       }}
     </AppContext.Consumer>
   )

@@ -5,3 +5,7 @@
 .game .date {
   padding: 0 5px;
 }
+
+.team {
+  display: inline-block;
+}

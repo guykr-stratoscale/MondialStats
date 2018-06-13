@@ -1,4 +1,248 @@
 import moment from 'moment'
+import { TEAMS } from './teams'
+
+const FACTORS = [
+  {
+    team_b: 13,
+    team_a: 1.35,
+    draw: 4,
+  },
+  {
+    team_b: 1.8,
+    team_a: 4.5,
+    draw: 3.65,
+  },
+  {
+    team_b: 2.6,
+    team_a: 1.4,
+    draw: 2.15,
+  },
+  {
+    team_b: 1.95,
+    team_a: 3.6,
+    draw: 2.65,
+  },
+  {
+    team_b: 19,
+    team_a: 1.25,
+    draw: 6.8,
+  },
+  {
+    team_b: 13,
+    team_a: 1.4,
+    draw: 4.85,
+  },
+  {
+    team_b: 2.15,
+    team_a: 3.9,
+    draw: 3.55,
+  },
+  {
+    team_b: 4.95,
+    team_a: 1.9,
+    draw: 3.55,
+  },
+  {
+    team_b: 2.15,
+    team_a: 4.35,
+    draw: 3.55,
+  },
+  {
+    team_b: 8.5,
+    team_a: 1.5,
+    draw: 4.65,
+  },
+  {
+    team_b: 10,
+    team_a: 1.4,
+    draw: 5.05,
+  },
+  {
+    team_b: 4.35,
+    team_a: 2.15,
+    draw: 3.35,
+  },
+  {
+    team_b: 31,
+    team_a: 1.15,
+    draw: 8.2,
+  },
+  {
+    team_b: 1.35,
+    team_a: 11,
+    draw: 5.5,
+  },
+  {
+    team_b: 3.6,
+    team_a: 2.3,
+    draw: 3.3,
+  },
+  {
+    team_b: 5.6,
+    team_a: 1.85,
+    draw: 3.7,
+  },
+  {
+    team_b: 4.6,
+    team_a: 2.05,
+    draw: 3.55,
+  },
+  {
+    team_b: 7.5,
+    team_a: 1.6,
+    draw: 4.1,
+  },
+  {
+    team_b: 17,
+    team_a: 1.3,
+    draw: 6.05,
+  },
+  {
+    team_b: 1.2,
+    team_a: 21,
+    draw: 7.3,
+  },
+  {
+    team_b: 11,
+    team_a: 1.8,
+    draw: 5.2,
+  },
+  {
+    team_b: 5.65,
+    team_a: 1.4,
+    draw: 3.75,
+  },
+  {
+    team_b: 4.75,
+    team_a: 1.95,
+    draw: 3.65,
+  },
+  {
+    team_b: 17,
+    team_a: 1.25,
+    draw: 6.7,
+  },
+  {
+    team_b: 2.85,
+    team_a: 2.85,
+    draw: 3.3,
+  },
+  {
+    team_b: 2.65,
+    team_a: 2.95,
+    draw: 3.35,
+  },
+  {
+    team_b: 14,
+    team_a: 1.3,
+    draw: 5.8,
+  },
+  {
+    team_b: 7.5,
+    team_a: 1.55,
+    draw: 4.4,
+  },
+  {
+    team_b: 2.05,
+    team_a: 4.55,
+    draw: 3.4,
+  },
+  {
+    team_b: 21,
+    team_a: 1.2,
+    draw: 7.1,
+  },
+  {
+    team_b: 2.6,
+    team_a: 2.3,
+    draw: 2.3,
+  },
+  {
+    team_b: 2.6,
+    team_a: 3.2,
+    draw: 2.3,
+  },
+  {
+    team_b: 1.7,
+    team_a: 6,
+    draw: 3.75,
+  },
+  {
+    team_b: 3.05,
+    team_a: 2.5,
+    draw: 3.25,
+  },
+  {
+    team_b: 1.4,
+    team_a: 10.5,
+    draw: 5,
+  },
+  {
+    team_b: 10.5,
+    team_a: 1.4,
+    draw: 5,
+  },
+  {
+    team_b: 2.35,
+    team_a: 3.6,
+    draw: 3.5,
+  },
+  {
+    team_b: 1.75,
+    team_a: 6,
+    draw: 3.8,
+  },
+  {
+    team_b: 1.9,
+    team_a: 5,
+    draw: 3.65,
+  },
+  {
+    team_b: 1.5,
+    team_a: 8,
+    draw: 4.5,
+  },
+  {
+    team_b: 3.2,
+    team_a: 2.5,
+    draw: 3.3,
+  },
+  {
+    team_b: 1.3,
+    team_a: 13,
+    draw: 5.85,
+  },
+  {
+    team_b: 1.45,
+    team_a: 9.5,
+    draw: 5,
+  },
+  {
+    team_b: 4.8,
+    team_a: 1.9,
+    draw: 3.65,
+  },
+  {
+    team_b: 1.95,
+    team_a: 4.5,
+    draw: 3.6,
+  },
+  {
+    team_b: 2,
+    team_a: 4.5,
+    draw: 3.4,
+  },
+  {
+    team_b: 2.6,
+    team_a: 3,
+    draw: 3.4,
+  },
+  {
+    team_b: 2.35,
+    team_a: 3.55,
+    draw: 3.35,
+  },
+]
 
 export const GAMES = [
   {
@@ -241,9 +485,14 @@ export const GAMES = [
     team_a: 'Panama',
     team_b: 'Tunisia',
   },
-].map(game => {
+].map((game, i) => {
   return {
     ...game,
+    team_a: TEAMS.find(team => team.name === game.team_a).id,
+    team_b: TEAMS.find(team => team.name === game.team_b).id,
     date: moment(game.time, 'DD.MM.YYYY HH:mm'),
+    team_a_factor: FACTORS[i].team_a,
+    team_b_factor: FACTORS[i].team_b,
+    draw_factor: FACTORS[i].draw,
   }
 })

@@ -1,23 +1,15 @@
 import { TEAMS } from '../data/teams'
+import { Record, List } from 'immutable'
 
-export default class Team {
-  static _id = 0
-  static init() {
-    return Team.create(TEAMS)
-  }
-  static create(teams) {
-    return teams.map(team => new Team(team)).reduce((result, t) => {
-      result[t.id] = t
-      return result
-    }, {})
-  }
+const Team = Record({
+  id: 0,
+  name: null,
+  region: null,
+  code: null,
+})
 
-  constructor({ name, region, code, flag }) {
-    this.id = Team._id++
-
-    this.name = name
-    this.region = region
-    this.code = code
-    this.flag = flag
-  }
+export const initTeams = () => {
+  return TEAMS.map((team, i) => {
+    return new Team(team)
+  })
 }
