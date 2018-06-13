@@ -18,6 +18,10 @@ class Player extends Record({
   gameScore(game) {
     let score = 0
 
+    if (isNaN(game.team_a_score) || isNaN(game.team_b_score)) {
+      return score
+    }
+
     const bet = this.bets.get(game.id)
     const is_game_draw = game.team_a_score === game.team_b_score
     const is_team_a_winner = game.team_a_score > game.team_b_score
@@ -62,6 +66,7 @@ export const initPlayers = () => {
     PLAYERS.map((player, i) => {
       return new Player({
         ...player,
+        id: i,
         bets: fromJS(
           player.bets.map((bet, gameIndex) => {
             return new Bet({

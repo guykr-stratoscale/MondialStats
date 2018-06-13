@@ -1,38 +1,26 @@
 import React from 'react'
 import { List } from 'immutable'
 import AppContext from '../context'
-import Team from './team'
-import Game from './game'
+import cn from 'classnames'
+import Bet from './bet'
 
-function Bet({ bet, player }) {
+/*
+
+ */
+export default function Player({ player }) {
   return (
     <AppContext.Consumer>
-      {({ games = List(), teams = List() }) => {
-        const game = games.get(bet.game)
-        const team_a = teams.get(game.team_a)
-        const team_b = teams.get(game.team_b)
-
+      {({ selectPlayer, selected_player }) => {
         return (
-          <div className="bet">
-            <Team team={team_a} /> {bet.team_a_score}:{bet.team_b_score} <Team team={team_b} />
-            <Game game={game} />
-            Score = {player.gameScore(game, bet)}
+          <div className="player">
+            <span
+              className={cn('name', { selected: selected_player === player.id })}
+              onClick={selectPlayer.bind(null, player.id)}>
+              {player.name} ({player.champion}, {player.scorer})
+            </span>
           </div>
         )
       }}
     </AppContext.Consumer>
-  )
-}
-
-export default function Player({ player }) {
-  return (
-    <div className="player">
-      <span className="name">
-        {player.name} ({player.bets.size}) ({player.champion}, {player.scorer})
-      </span>
-      <div className="bets">
-        {/*player.bets.map((bet, i) => <Bet key={i} bet={bet} player={player} />)*/}
-      </div>
-    </div>
   )
 }

@@ -18,3 +18,7 @@
   vertical-align: text-bottom;
   margin-right: 3px;
 }
+
+.player .selected {
+  font-weight: bold;
+}
