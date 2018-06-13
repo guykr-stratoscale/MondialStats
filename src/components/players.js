@@ -1,14 +1,15 @@
 import React from 'react'
+import { List } from 'immutable'
 import Player from './player'
 import AppContext from '../context'
 
 export default function Players() {
   return (
     <AppContext.Consumer>
-      {({ players = {} }) => {
+      {({ players = List() }) => {
         return (
           <ol>
-            {Object.values(players).map(player => (
+            {players.map(player => (
               <li>
                 <Player player={player} />
               </li>

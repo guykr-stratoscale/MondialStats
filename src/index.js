@@ -9,8 +9,6 @@ import Players from './components/players'
 import AppContext from './context'
 import './styles.css'
 
-// console.log('teams', initTeams()[0].toJS())
-
 class App extends React.Component {
   state = {
     teams: initTeams(),
@@ -34,8 +32,6 @@ class App extends React.Component {
         <div className="App">
           <button onClick={this.updateGame}>update</button>
           <Players />
-          <Teams />
-          <Games />
         </div>
       </AppContext.Provider>
     )

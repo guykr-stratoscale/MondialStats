@@ -249,6 +249,10 @@ export const GAMES = [
     time: '15.06.2018 01:00',
     team_a: 'Russia',
     team_b: 'Saudi Arabia',
+    team_a_score: 2,
+    team_b_score: 1,
+    questions: ['am i pretty?'],
+    answers: ['yes'],
   },
   {
     time: '15.06.2018 22:00',

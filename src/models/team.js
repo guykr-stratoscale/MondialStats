@@ -1,5 +1,5 @@
 import { TEAMS } from '../data/teams'
-import { Record, List } from 'immutable'
+import { Record, fromJS } from 'immutable'
 
 const Team = Record({
   id: 0,
@@ -9,7 +9,5 @@ const Team = Record({
 })
 
 export const initTeams = () => {
-  return TEAMS.map((team, i) => {
-    return new Team(team)
-  })
+  return fromJS(TEAMS.map(team => new Team(team)))
 }

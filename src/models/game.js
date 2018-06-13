@@ -1,12 +1,12 @@
 import { GAMES } from '../data/games'
-import { Record, List } from 'immutable'
+import { Record, List, fromJS } from 'immutable'
 
 const Game = Record({
   id: 0,
   team_a: null,
   team_b: null,
-  team_a_score: null,
-  team_b_score: null,
+  team_a_score: '?',
+  team_b_score: '?',
   team_a_factor: 1,
   team_b_factor: 1,
   draw_factor: 1,
@@ -16,9 +16,16 @@ const Game = Record({
 })
 
 export const initGames = () => {
-  return GAMES.map((game, i) => {
-    return new Game({ ...game, id: i })
-  })
+  return fromJS(
+    GAMES.map((game, i) => {
+      return new Game({
+        ...game,
+        questions: fromJS(game.questions || []),
+        answers: fromJS(game.answers || []),
+        id: i,
+      })
+    }),
+  )
 }
 
 export default Game

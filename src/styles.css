@@ -9,3 +9,12 @@
 .team {
   display: inline-block;
 }
+.team .name {
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.team .flag {
+  vertical-align: text-bottom;
+  margin-right: 3px;
+}
