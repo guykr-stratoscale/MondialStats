@@ -9,8 +9,15 @@ import Bet from './bet'
  */
 function BetType({ bet }) {
   const total_goals = bet.team_a_score + bet.team_b_score
-
-  return total_goals > 4 ? <Icon type="star" /> : total_goals < 2 ? <Icon type="frown" /> : null
+  if (total_goals < 2) {
+    return <Icon type="meh" />
+  }
+  if (total_goals > 3) {
+    const stars = Math.min(3, total_goals - 3)
+    const range = [...Array(stars).keys()]
+    return <Fragment>{range.map(i => <Icon key={i} type="star" />)}</Fragment>
+  }
+  return null
 }
 
 function BetsCard({ bets, players, team }) {
@@ -18,7 +25,7 @@ function BetsCard({ bets, players, team }) {
     return null
   }
 
-  const title = team ? <Team team={team} /> : ''
+  const title = team ? <Team team={team} /> : <Fragment><Icon type="arrow-right"/><Icon type="arrow-left"/></Fragment>
 
   return (
     <Card
