@@ -17,7 +17,9 @@
     "react-scripts": "1.1.4",
     "recharts": "1.0.0-beta.10"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "prettier": "^1.13.5"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

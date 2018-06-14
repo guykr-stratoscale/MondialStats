@@ -1,5 +1,5 @@
 import React from 'react'
-import { BarChart, XAxis, YAxis, ZAxis, Tooltip, Legend, Bar, CartesianGrid } from 'recharts'
+import {Bar, BarChart, CartesianGrid, Tooltip, XAxis, YAxis, ZAxis} from 'recharts'
 
 function renderTooltip(data) {
   if (data.payload.length) {
