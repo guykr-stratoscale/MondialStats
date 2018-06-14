@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom'
 import { initTeams } from './models/team'
 import { initGames } from './models/game'
 import { initPlayers } from './models/player'
-// import Teams from './components/teams'
-// import Games from './components/games'
 import Players from './components/players'
 import Bet from './components/bet'
 import AppContext from './context'
@@ -13,26 +11,18 @@ import BarChart from './components/bar-chart'
 import './styles.css'
 
 class App extends React.Component {
+  _selectPlayer = selected_player => {
+    selected_player !== this.state.selected_player
+      ? this.setState({ selected_player })
+      : this.setState({ selected_player: null })
+  }
+
   state = {
     teams: initTeams(),
     games: initGames(),
     players: initPlayers(),
     selected_player: null,
-    selectPlayer: selected_player =>
-      selected_player !== this.state.selected_player
-        ? this.setState({ selected_player })
-        : this.setState({ selected_player: null }),
-  }
-
-  updateGame = () => {
-    const { games } = this.state
-    const game = Object.values(games)[0]
-    game.team_a_score = 1
-    game.team_b_score = 3
-
-    this.setState({
-      games,
-    })
+    selectPlayer: this._selectPlayer,
   }
 
   getPlayerBets = () => {
