@@ -1,7 +1,7 @@
 import { GAMES } from '../data/games'
 import { Record, List, fromJS } from 'immutable'
 
-const Game = Record({
+class Game extends Record({
   id: 0,
   team_a: null,
   team_b: null,
@@ -13,7 +13,7 @@ const Game = Record({
   date: null,
   questions: List(),
   answers: List(),
-})
+}) {}
 
 export const initGames = () => {
   return fromJS(

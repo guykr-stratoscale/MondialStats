@@ -56,6 +56,15 @@ class Player extends Record({
     return score
   }
 
+  betRisk(bet, game) {
+    const risk =
+      bet.team_a_score > bet.team_b_score
+        ? game.team_a_factor
+        : bet.team_b_score > bet.team_a_score ? game.team_b_factor : game.draw_factor
+
+    return Math.round(risk * 100) / 100
+  }
+
   score(games = List()) {
     return games.reduce((result, game) => result + this.gameScore(game), 0)
   }

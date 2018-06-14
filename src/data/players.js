@@ -1,7 +1,8 @@
-//Neymar
+import * as d3 from 'd3'
+
 const PLAYERS = [
   {
-    name: 'Guy',
+    name: 'גיא',
     champion: 'Brazil',
     scorer: 'Neymar',
     bets: [
@@ -200,9 +201,9 @@ const PLAYERS = [
     ],
   },
   {
-    name: 'Galileo',
+    name: 'גלילאו',
     champion: 'France',
-    scorer: 'Antoine Griezmann',
+    scorer: 'Griezmann',
     bets: [
       {
         team_b_score: '1',
@@ -399,7 +400,7 @@ const PLAYERS = [
     ],
   },
   {
-    name: 'Itzig',
+    name: 'איטזיג',
     champion: 'Germany',
     scorer: 'Neymar',
     bets: [
@@ -598,9 +599,9 @@ const PLAYERS = [
     ],
   },
   {
-    name: 'Shriki',
+    name: 'שריקי',
     champion: 'Germany',
-    scorer: 'Antoine Griezmann',
+    scorer: 'Griezmann',
     bets: [
       {
         team_b_score: '0',
@@ -797,7 +798,7 @@ const PLAYERS = [
     ],
   },
   {
-    name: 'Itamar',
+    name: 'היו״ר',
     champion: 'Germany',
     scorer: 'Timo Werner',
     bets: [
@@ -996,7 +997,7 @@ const PLAYERS = [
     ],
   },
   {
-    name: 'Fogel',
+    name: 'פוגל',
     champion: 'Brazil',
     scorer: 'Revivo',
     bets: [
@@ -1195,7 +1196,7 @@ const PLAYERS = [
     ],
   },
   {
-    name: 'Yon',
+    name: 'יוני',
     champion: 'Brazil',
     scorer: 'Gabriel Jesus',
     bets: [
@@ -1394,7 +1395,7 @@ const PLAYERS = [
     ],
   },
   {
-    name: 'Yashke',
+    name: 'ישקה',
     champion: 'Germany',
     scorer: 'Thomas Müller',
     bets: [
@@ -1593,7 +1594,7 @@ const PLAYERS = [
     ],
   },
   {
-    name: 'Ronit',
+    name: 'שפיגלית',
     champion: 'Brazil',
     scorer: 'Neymar',
     bets: [
@@ -1792,9 +1793,9 @@ const PLAYERS = [
     ],
   },
   {
-    name: 'Spiegel',
+    name: 'שפיגלון',
     champion: 'Spain',
-    scorer: 'Robert Lewandowski',
+    scorer: 'Lewandowski',
     bets: [
       {
         team_b_score: '1',
@@ -1990,6 +1991,406 @@ const PLAYERS = [
       },
     ],
   },
+  {
+    name: 'עציץ',
+    champion: 'France',
+    scorer: 'a German dude',
+    bets: [
+      {
+        team_b_score: '0',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '3',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '4',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '3',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '3',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '3',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '0',
+      },
+    ],
+  },
+  {
+    name: 'מושון',
+    champion: 'Germany',
+    scorer: 'Ronaldo',
+    bets: [
+      {
+        team_b_score: '1',
+        team_a_score: '3',
+      },
+      {
+        team_b_score: '3',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '3',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '3',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '3',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '3',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '3',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '3',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '3',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '3',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '5',
+      },
+      {
+        team_b_score: '4',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '4',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '3',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '4',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '4',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '3',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '4',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '3',
+      },
+      {
+        team_b_score: '3',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '3',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '3',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '3',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '3',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '3',
+      },
+      {
+        team_b_score: '3',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '3',
+      },
+      {
+        team_b_score: '3',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '4',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '4',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '3',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '3',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '4',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '1',
+      },
+    ],
+  },
 ]
 
 export default PLAYERS
+
+export const playerColor = d3.scaleSequential(d3.interpolateSinebow).domain([0, PLAYERS.length])

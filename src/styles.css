@@ -1,14 +1,29 @@
 .App {
   font-family: sans-serif;
+  font-size: 12px;
+  width: 1000px;
 }
 
+h2 {
+  text-align: center;
+}
 .game .date {
   padding: 0 5px;
+}
+
+.bet {
+  display: inline-block;
+  margin: 3px 10px;
+  width: 200px;
 }
 
 .team {
   display: inline-block;
 }
+.team.winner {
+  font-weight: bold;
+}
+
 .team .name {
   font-size: 12px;
   line-height: 15px;
@@ -19,6 +34,17 @@
   margin-right: 3px;
 }
 
-.player .selected {
+.player .name:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.player .name {
+  font-weight: bold;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.player.selected {
   font-weight: bold;
 }

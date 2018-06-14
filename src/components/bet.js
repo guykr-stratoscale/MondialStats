@@ -2,7 +2,7 @@ import React from 'react'
 import { List } from 'immutable'
 import AppContext from '../context'
 import Team from './team'
-import Game from './game'
+import cn from 'classnames'
 
 export default function Bet({ bet, player }) {
   return (
@@ -14,9 +14,9 @@ export default function Bet({ bet, player }) {
 
         return (
           <div className="bet">
-            <Team team={team_a} /> {bet.team_a_score}:{bet.team_b_score} <Team team={team_b} />
-            <Game game={game} />
-            Score = {player.gameScore(game, bet)}
+            <Team team={team_a} className={cn({ winner: bet.team_a_score > bet.team_b_score })} />{' '}
+            {bet.team_a_score}:{bet.team_b_score}{' '}
+            <Team team={team_b} className={cn({ winner: bet.team_a_score < bet.team_b_score })} />
           </div>
         )
       }}

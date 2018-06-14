@@ -9,8 +9,8 @@ export default function Players() {
       {({ players = List() }) => {
         return (
           <ol>
-            {players.map(player => (
-              <li>
+            {players.sortBy(p => p.name).map(player => (
+              <li key={player.id}>
                 <Player player={player} />
               </li>
             ))}
