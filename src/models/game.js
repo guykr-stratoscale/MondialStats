@@ -13,7 +13,19 @@ class Game extends Record({
   date: null,
   questions: List(),
   answers: List(),
-}) {}
+}) {
+  wasPlayed() {
+    return this.date < new Date()
+  }
+
+  getWinner() {
+    return this.team_a_score > this.team_b_score
+      ? this.team_a
+      : this.team_b_score > this.team_a_score
+        ? this.team_b
+        : null
+  }
+}
 
 export const initGames = () => {
   return fromJS(

@@ -14,25 +14,101 @@
 .ant-layout-header {
   color: white;
 }
+.ant-popover-title {
+  text-align: center;
+  font-weight: bold;
+}
 
 .app-layout {
-  min-height: 100vh
+  min-height: 100vh;
 }
 
 h2 {
   text-align: center;
   margin: 10px 0;
 }
+
+/* Games */
+.game {
+  display: inline-block;
+  margin: 3px;
+}
+.game.was-played .ant-card-bordered {
+  border-color: black;
+}
+.game.selected .ant-card-bordered {
+  border-color: dodgerblue;
+}
+
+.game:hover {
+  cursor: pointer;
+}
+.game:hover .ant-card-bordered {
+  border-color: dodgerblue;
+}
+
 .game .date {
   padding: 0 5px;
+  font-size: 12px;
+  color: gray;
+}
+.game .ant-card-head-title {
+  text-align: center;
+  font-size: 13px;
+}
+
+.game .vs {
+  font-size: 15px;
+  line-height: 55px;
+  vertical-align: top;
+  margin: 0 10px;
+}
+.game .score {
+  text-align: center;
+  font-size: 16px;
+  margin: 0;
+}
+
+/* Game Bets */
+
+.game-bets {
+}
+.bets-card {
+  display: inline-block;
+  margin: 5px;
+  vertical-align: top;
+}
+
+.bets-card .ant-card-head-title {
+  font-size: 12px;
+  text-align: center;
+}
+
+.bets-card .bets {
+  font-size: 12px;
+  direction: rtl;
+  text-align: right;
+}
+
+.bet-wrapper {
+  display: table-row;
+  width: 100%;
+}
+.bet-wrapper .player-name{
+  display: table-cell;
+  width: 100px;
+}
+.bet-wrapper .bet {
+  display: table-cell;
 }
 
 .bet {
   display: inline-block;
   margin: 3px 10px;
-  width: 200px;
 }
 
+
+/* Teams */
 .team {
   display: inline-block;
 }
@@ -41,11 +117,17 @@ h2 {
 }
 
 .team .name {
-  font-size: 12px;
   line-height: 15px;
 }
 
-.team .flag {
+.team:not(.tiny) .flag {
+  display: block;
+}
+
+.team.tiny {
+  font-size: 12px;
+}
+.team.tiny .flag {
   vertical-align: text-bottom;
   margin-right: 3px;
 }

@@ -1,22 +1,16 @@
 import React from 'react'
 import Game from './game'
-import AppContext from '../context'
+import { withContext } from '../context'
 import { List } from 'immutable'
 
-export default function Games() {
+function Games({ games = List() }) {
   return (
-    <AppContext.Consumer>
-      {({ games = List() }) => {
-        return (
-          <ol>
-            {games.map(game => (
-              <li>
-                <Game game={game} />
-              </li>
-            ))}
-          </ol>
-        )
-      }}
-    </AppContext.Consumer>
+    <div className="games">
+      {games.map(game => (
+          <Game key={game.id} game={game} />
+      ))}
+    </div>
   )
 }
+
+export default withContext('games')(Games)

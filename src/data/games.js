@@ -246,7 +246,7 @@ const FACTORS = [
 
 export const GAMES = [
   {
-    time: '15.06.2018 01:00',
+    time: '15.06.2017 01:00',
     team_a: 'Russia',
     team_b: 'Saudi Arabia',
     team_a_score: 2,
@@ -494,7 +494,7 @@ export const GAMES = [
     ...game,
     team_a: TEAMS.find(team => team.name === game.team_a).id,
     team_b: TEAMS.find(team => team.name === game.team_b).id,
-    date: moment(game.time, 'DD.MM.YYYY HH:mm'),
+    date: moment(game.time, 'DD.MM.YYYY HH:mm').subtract(7, 'hours'),
     team_a_factor: FACTORS[i].team_a,
     team_b_factor: FACTORS[i].team_b,
     draw_factor: FACTORS[i].draw,

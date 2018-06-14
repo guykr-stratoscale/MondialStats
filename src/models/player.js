@@ -2,6 +2,7 @@ import { Record, List, fromJS } from 'immutable'
 import PLAYERS from '../data/players'
 
 const Bet = Record({
+  player: null,
   game: 0,
   team_a_score: 0,
   team_b_score: 0,
@@ -42,7 +43,11 @@ class Player extends Record({
 
       const factor = is_game_draw
         ? game.draw_factor
-        : is_team_a_winner ? game.team_a_factor : is_team_b_winner ? game.team_b_factor : 1
+        : is_team_a_winner
+          ? game.team_a_factor
+          : is_team_b_winner
+            ? game.team_b_factor
+            : 1
 
       score = (toto_points + goals_points) * factor
     }
@@ -60,7 +65,9 @@ class Player extends Record({
     const risk =
       bet.team_a_score > bet.team_b_score
         ? game.team_a_factor
-        : bet.team_b_score > bet.team_a_score ? game.team_b_factor : game.draw_factor
+        : bet.team_b_score > bet.team_a_score
+          ? game.team_b_factor
+          : game.draw_factor
 
     return Math.round(risk * 100) / 100
   }
@@ -80,6 +87,7 @@ export const initPlayers = () => {
           player.bets.map((bet, gameIndex) => {
             return new Bet({
               ...bet,
+              player: i,
               team_a_score: Number(bet.team_a_score),
               team_b_score: Number(bet.team_b_score),
               answers: fromJS(bet.answers || []),

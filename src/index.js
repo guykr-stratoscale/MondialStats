@@ -5,10 +5,11 @@ import { initGames } from './models/game'
 import { initPlayers } from './models/player'
 import AppContext from './context'
 import BetsPage from './pages/bets'
+import GamesPage from './pages/games'
 import { Icon, Layout, Menu } from 'antd'
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.css'
 import './styles.css'
 
 const { Sider, Content } = Layout
@@ -20,13 +21,22 @@ class App extends React.Component {
       : this.setState({ selected_player: null })
   }
 
+  _selectGame = selected_game => {
+    selected_game !== this.state.selected_game
+      ? this.setState({ selected_game })
+      : this.setState({ selected_game: null })
+  }
+
   state = {
     sidebar_collapsed: false,
     teams: initTeams(),
     games: initGames(),
     players: initPlayers(),
     selected_player: null,
+    selected_game: null,
+
     selectPlayer: this._selectPlayer,
+    selectGame: this._selectGame,
   }
 
   onCollapse = () => {
@@ -50,24 +60,24 @@ class App extends React.Component {
                 <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
                   <Menu.Item key="1">
                     <Icon type="heart" />
-                    <span>Bets</span>
+                    <span>הימורים</span>
                     <Link to="/" />
                   </Menu.Item>
-                  <Menu.Item key="2" disabled>
+                  <Menu.Item key="2">
                     <Icon type="notification" />
-                    <span>Games</span>
+                    <span>משחקים</span>
                     <Link to="/games" />
                   </Menu.Item>
                   <Menu.Item key="3" disabled>
                     <Icon type="user" />
-                    <span>Players</span>
+                    <span>מהמרים</span>
                     <Link to="/players" />
                   </Menu.Item>
                 </Menu>
               </Sider>
               <Content style={{ marginLeft: this.state.sidebar_collapsed ? 80 : 200 }}>
                 <Route exact path="/" component={BetsPage} />
-                <Route path="/games" component={BetsPage} />
+                <Route path="/games" component={GamesPage} />
                 <Route path="/players" component={BetsPage} />
               </Content>
             </Layout>
