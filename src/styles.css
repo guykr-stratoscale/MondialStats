@@ -1,10 +1,9 @@
-@import '~antd/dist/antd.css';
-
 .logo {
   height: 120px;
   margin: 10px;
   background-size: contain;
   background-image: url('images/logo.png');
+  /*background-image: url('https://rawgit.com/guykr/MondialStats/5e0a6ef3657e3154cc20cce81b9c130a88778264/src/images/logo.png');*/
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -22,6 +21,7 @@
 
 h2 {
   text-align: center;
+  margin: 10px 0;
 }
 .game .date {
   padding: 0 5px;

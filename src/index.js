@@ -8,6 +8,7 @@ import BetsPage from './pages/bets'
 import { Icon, Layout, Menu } from 'antd'
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 
+import 'antd/dist/antd.css';
 import './styles.css'
 
 const { Sider, Content } = Layout
@@ -20,11 +21,18 @@ class App extends React.Component {
   }
 
   state = {
+    sidebar_collapsed: false,
     teams: initTeams(),
     games: initGames(),
     players: initPlayers(),
     selected_player: null,
     selectPlayer: this._selectPlayer,
+  }
+
+  onCollapse = () => {
+    this.setState(state => ({
+      sidebar_collapsed: !state.sidebar_collapsed,
+    }))
   }
 
   render() {
@@ -33,10 +41,14 @@ class App extends React.Component {
         <Router>
           <Layout className="app-layout">
             <Layout>
-              <Sider style={{ overflow: 'auto', height: '100vh', position: 'fixed', left: 0 }}>
+              <Sider
+                style={{ overflow: 'auto', height: '100vh', position: 'fixed', left: 0 }}
+                collapsible
+                collapsed={this.state.sidebar_collapsed}
+                onCollapse={this.onCollapse}>
                 <div className="logo" />
                 <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                  <Menu.Item key="1" >
+                  <Menu.Item key="1">
                     <Icon type="heart" />
                     <span>Bets</span>
                     <Link to="/" />
@@ -53,7 +65,7 @@ class App extends React.Component {
                   </Menu.Item>
                 </Menu>
               </Sider>
-              <Content style={{ marginLeft: 200 }}>
+              <Content style={{ marginLeft: this.state.sidebar_collapsed ? 80 : 200 }}>
                 <Route exact path="/" component={BetsPage} />
                 <Route path="/games" component={BetsPage} />
                 <Route path="/players" component={BetsPage} />

@@ -10,7 +10,7 @@ class BetsPage extends Component {
     const { selected_player, players } = this.props
     const player = players.get(selected_player)
     if (player) {
-      return player.bets.map(bet => <Bet bet={bet} player={player} />)
+      return player.bets.map((bet, i) => <Bet key={i} bet={bet} player={player} />)
     }
   }
 
