@@ -5,6 +5,36 @@ import { Card, Popover } from 'antd'
 import cn from 'classnames'
 import GameBets from './game-bets'
 
+function GameOdds({ game }) {
+  const total = game.draw_factor + game.team_a_factor + game.team_b_factor
+
+  return (
+    <div className="game-odds">
+      <span
+        className="team-b-odds"
+        style={{
+          width: `${(game.team_b_factor / total) * 100}%`,
+          left: 0,
+        }}
+      />
+      <span
+        className="draw-odds"
+        style={{
+          width: `${(game.draw_factor / total) * 100}%`,
+          left: `${(game.team_b_factor / total) * 100}%`,
+        }}
+      />
+      <span
+        className="team-a-odds"
+        style={{
+          width: `${(game.team_a_factor / total) * 100}%`,
+          left: `${((game.team_b_factor + game.draw_factor) / total) * 100}%`,
+        }}
+      />
+    </div>
+  )
+}
+
 class Game extends Component {
   _title() {
     const { game, teams } = this.props
@@ -34,6 +64,7 @@ class Game extends Component {
         className={cn('game', {
           'was-played': game.wasPlayed(),
           selected: game.id === selected_game,
+          hidden: selected_game !== null && game.id !== selected_game,
         })}
         onClick={selectGame.bind(null, game.id)}>
         <Popover
@@ -42,6 +73,7 @@ class Game extends Component {
           trigger="click"
           visible={game.id === selected_game}>
           <Card title={this._title()} style={{ width: 300 }}>
+            <GameOdds game={game} />
             <p className="score">
               {game.team_a_score} : {game.team_b_score}
             </p>

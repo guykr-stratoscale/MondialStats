@@ -40,6 +40,10 @@ h2 {
   border-color: dodgerblue;
 }
 
+.game.hidden {
+  opacity: 0.3;
+}
+
 .game:hover {
   cursor: pointer;
 }
@@ -107,6 +111,29 @@ h2 {
   margin: 3px 10px;
 }
 
+.game-odds {
+  position: relative;
+  width: calc(100% + 50px);
+  height: 5px;
+  margin-top: -24px;
+  margin-left: -25px;
+  margin-bottom: 24px;
+}
+.game-odds > span {
+  display: inline-block;
+  height: 100%;
+  position: absolute;
+}
+.game-odds .team-a-odds {
+  background: dodgerblue;
+}
+.game-odds .draw-odds {
+  background: #bdbdbd;
+}
+.game-odds .team-b-odds {
+  background: palevioletred;
+}
+
 
 /* Teams */
 .team {
@@ -126,6 +153,7 @@ h2 {
 
 .team.tiny {
   font-size: 12px;
+  margin: 0 5px;
 }
 .team.tiny .flag {
   vertical-align: text-bottom;

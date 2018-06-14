@@ -1994,7 +1994,7 @@ const PLAYERS = [
   {
     name: 'עציץ',
     champion: 'France',
-    scorer: 'a German dude',
+    scorer: 'Neymar',
     bets: [
       {
         team_b_score: '0',
@@ -2386,6 +2386,205 @@ const PLAYERS = [
       {
         team_b_score: '0',
         team_a_score: '1',
+      },
+    ],
+  },
+  {
+    name: 'סמי',
+    champion: 'Germany',
+    scorer: 'Neymar',
+    bets: [
+      {
+        team_b_score: '1',
+        team_a_score: '3',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '3',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '3',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '3',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '3',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '3',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '0',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '3',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '3',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '4',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '0',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '1',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '1',
+        team_a_score: '2',
+      },
+      {
+        team_b_score: '2',
+        team_a_score: '2',
       },
     ],
   },
