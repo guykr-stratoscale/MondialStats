@@ -1,22 +1,11 @@
 import React from 'react'
-import {
-  ScatterChart,
-  Scatter,
-  XAxis,
-  YAxis,
-  ZAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  Dot,
-  Label,
-} from 'recharts'
+import { ScatterChart, Scatter, XAxis, YAxis, ZAxis, Label, Tooltip, Legend, Dot } from 'recharts'
 
 import { playerColor } from '../data/players'
 
 export default function BubbleChart({ data }) {
   return (
-    <ScatterChart width={1000} height={400} margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
+    <ScatterChart width={800} height={400} margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
       <XAxis
         dataKey={'risk'}
         type="number"
@@ -24,8 +13,8 @@ export default function BubbleChart({ data }) {
         label="הימור נגד יחס ההימורים"
         tick={false}
       />
-      <YAxis dataKey={'goals'} type="number" name="כמות שערים" tick={false}>
-        <Label value="כמות שערים" offset={-45} position="left" angle={90} />
+      <YAxis dataKey={'goals'} type="number" name="שערים" tick={false}>
+        <Label value="כמות שערים" angle="270" offset={-20} />
       </YAxis>
       <ZAxis type="category" dataKey="name" name="שם" />
       <Tooltip cursor={{ strokeDasharray: '3 3' }} />

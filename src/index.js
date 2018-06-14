@@ -73,7 +73,6 @@ class App extends React.Component {
 
     return <BarChart data={data.toJS()} />
   }
-
   getScorerChart = () => {
     const data = this.state.players
       .groupBy(p => p.scorer)
@@ -91,9 +90,10 @@ class App extends React.Component {
     return (
       <AppContext.Provider value={this.state}>
         <div className="App">
+          <h2 dir="rtl">המהמרים</h2>
           <Players />
           <React.Fragment>{this.getPlayerBets()}</React.Fragment>
-          <h2 dir="rtl">מפת תעוזה</h2>
+          <h2 dir="rtl">ההימורים</h2>
           {this.getRiskChart()}
           <h2 dir="rtl">האלופה</h2>
           {this.getChampionChart()}

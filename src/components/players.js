@@ -1,22 +1,18 @@
 import React from 'react'
 import { List } from 'immutable'
 import Player from './player'
-import AppContext from '../context'
+import { withContext } from '../context'
 
-export default function Players() {
+function Players({ players = List() }) {
   return (
-    <AppContext.Consumer>
-      {({ players = List() }) => {
-        return (
-          <ol>
-            {players.sortBy(p => p.name).map(player => (
-              <li key={player.id}>
-                <Player player={player} />
-              </li>
-            ))}
-          </ol>
-        )
-      }}
-    </AppContext.Consumer>
+    <ol>
+      {players.sortBy(p => p.name).map(player => (
+        <li key={player.id}>
+          <Player player={player} />
+        </li>
+      ))}
+    </ol>
   )
 }
+
+export default withContext('players')(Players)
