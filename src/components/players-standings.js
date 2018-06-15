@@ -24,6 +24,7 @@ function PlayerStandings({ players, games }) {
               score={score}
               success={lastBetSuccess}
               isGoalsSuccess={p.isGoalsSuccess(playedGames.last())}
+              isBonusSuccess={p.isBonusSuccess(playedGames.last())}
             />
           )
         })}

@@ -21,6 +21,7 @@ const PLAYERS = [
       {
         team_b_score: '2',
         team_a_score: '2',
+        answers: [1],
       },
       {
         team_b_score: '0',

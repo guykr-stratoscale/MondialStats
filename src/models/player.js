@@ -54,7 +54,7 @@ class Player extends Record({
 
     game.questions.forEach((q, i) => {
       if (game.answers.get(i) === bet.answers.get(i)) {
-        score += 1
+        score += q
       }
     })
 
@@ -84,6 +84,16 @@ class Player extends Record({
 
     const bet = this.bets.get(game.id)
     return game.team_a_score === bet.team_a_score && game.team_b_score === bet.team_b_score
+  }
+  isBonusSuccess(game) {
+    const bet = this.bets.get(game.id)
+    let result = false
+    game.questions.forEach((q, i) => {
+      if (game.answers.get(i) === bet.answers.get(i)) {
+        result = true
+      }
+    })
+    return result
   }
 }
 
