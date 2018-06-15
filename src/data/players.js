@@ -19,9 +19,9 @@ const PLAYERS = [
         team_a_score: '0',
       },
       {
-        team_b_score: '3',
-        team_a_score: '3',
-        answers: [3],
+        team_b_score: '2',
+        team_a_score: '2',
+        answers: [1],
       },
       {
         team_b_score: '0',
