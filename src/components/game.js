@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import Team from './team'
-import { withContext } from '../context'
+import { withContext, gamesContext } from '../context'
 import { Card, Popover } from 'antd'
 import cn from 'classnames'
 import GameBets from './game-bets'
@@ -84,4 +84,4 @@ class Game extends Component {
   }
 }
 
-export default withContext('teams', 'selected_game', 'selectGame')(Game)
+export default withContext('teams')(gamesContext('selected_game', 'selectGame')(Game))

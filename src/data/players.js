@@ -2,7 +2,7 @@ import * as d3 from 'd3'
 
 const PLAYERS = [
   {
-    name: 'גיא',
+    name: 'קרמני',
     champion: 'Brazil',
     scorer: 'Neymar',
     bets: [
@@ -1196,7 +1196,7 @@ const PLAYERS = [
     ],
   },
   {
-    name: 'יוני',
+    name: 'יונלף',
     champion: 'Brazil',
     scorer: 'Gabriel Jesus',
     bets: [

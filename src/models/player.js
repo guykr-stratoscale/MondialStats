@@ -58,7 +58,7 @@ class Player extends Record({
       }
     })
 
-    return score
+    return Math.round(score * 10) / 10
   }
 
   betRisk(bet, game) {
@@ -69,11 +69,20 @@ class Player extends Record({
           ? game.team_b_factor
           : game.draw_factor
 
-    return Math.round(risk * 100) / 100
+    return Math.round(risk * 10) / 10
   }
 
   score(games = List()) {
     return games.reduce((result, game) => result + this.gameScore(game), 0)
+  }
+
+  isGoalsSuccess(game) {
+    if (isNaN(game.team_a_score) || isNaN(game.team_b_score)) {
+      return false
+    }
+
+    const bet = this.bets.get(game.id)
+    return game.team_a_score === bet.team_a_score && game.team_b_score === bet.team_b_score
   }
 }
 

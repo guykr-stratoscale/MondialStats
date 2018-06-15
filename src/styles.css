@@ -32,6 +32,7 @@ h2 {
 .game {
   display: inline-block;
   margin: 3px;
+  transition: all 0.3s;
 }
 .game.was-played .ant-card-bordered {
   border-color: black;
@@ -98,7 +99,7 @@ h2 {
   display: table-row;
   width: 100%;
 }
-.bet-wrapper .player-name{
+.bet-wrapper .player-name {
   display: table-cell;
   width: 100px;
 }
@@ -134,7 +135,6 @@ h2 {
   background: palevioletred;
 }
 
-
 /* Teams */
 .team {
   display: inline-block;
@@ -160,11 +160,11 @@ h2 {
   margin-right: 3px;
 }
 
+/* Player */
 .player .name:hover {
   cursor: pointer;
   text-decoration: underline;
 }
-
 .player .name {
   font-weight: bold;
   font-size: 14px;
@@ -173,4 +173,20 @@ h2 {
 
 .player.selected {
   font-weight: bold;
+}
+
+.player-standing {
+  direction: rtl;
+}
+
+.player-standing .score {
+  font-size: 15px;
+  margin-left: 10px;
+  width: 40px;
+  display: inline-block;
+  text-align: left;
+}
+
+.player-standing.success .score {
+  color: green;
 }

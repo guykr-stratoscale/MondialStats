@@ -15,7 +15,7 @@ class Game extends Record({
   answers: List(),
 }) {
   wasPlayed() {
-    return this.date < new Date()
+    return this.team_a_score !== '?' && this.team_b_score !== '?'
   }
 
   getWinner() {

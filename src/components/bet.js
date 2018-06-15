@@ -3,9 +3,6 @@ import { List } from 'immutable'
 import { withContext } from '../context'
 import Team from './team'
 import cn from 'classnames'
-import { Icon } from 'antd'
-
-
 
 function Bet({ games = List(), teams = List(), bet, decorate = false, showTeams = true }) {
   const game = games.get(bet.game)

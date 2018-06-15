@@ -6,6 +6,7 @@ import { initPlayers } from './models/player'
 import AppContext from './context'
 import BetsPage from './pages/bets'
 import GamesPage from './pages/games'
+import PlayersPage from './pages/players'
 import { Icon, Layout, Menu } from 'antd'
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 
@@ -21,11 +22,6 @@ class App extends React.Component {
       : this.setState({ selected_player: null })
   }
 
-  _selectGame = selected_game => {
-    selected_game !== this.state.selected_game
-      ? this.setState({ selected_game })
-      : this.setState({ selected_game: null })
-  }
 
   state = {
     sidebar_collapsed: false,
@@ -36,7 +32,6 @@ class App extends React.Component {
     selected_game: null,
 
     selectPlayer: this._selectPlayer,
-    selectGame: this._selectGame,
   }
 
   onCollapse = () => {
@@ -57,18 +52,18 @@ class App extends React.Component {
                 collapsed={this.state.sidebar_collapsed}
                 onCollapse={this.onCollapse}>
                 <div className="logo" />
-                <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                  <Menu.Item key="1">
+                <Menu theme="dark" defaultSelectedKeys={[window.location.pathname]} mode="inline">
+                  <Menu.Item key="/">
                     <Icon type="heart" />
                     <span>הימורים</span>
                     <Link to="/" />
                   </Menu.Item>
-                  <Menu.Item key="2">
+                  <Menu.Item key="/games">
                     <Icon type="notification" />
                     <span>משחקים</span>
                     <Link to="/games" />
                   </Menu.Item>
-                  <Menu.Item key="3" disabled>
+                  <Menu.Item key="/players" >
                     <Icon type="user" />
                     <span>מהמרים</span>
                     <Link to="/players" />
@@ -78,7 +73,7 @@ class App extends React.Component {
               <Content style={{ marginLeft: this.state.sidebar_collapsed ? 80 : 200 }}>
                 <Route exact path="/" component={BetsPage} />
                 <Route path="/games" component={GamesPage} />
-                <Route path="/players" component={BetsPage} />
+                <Route path="/players" component={PlayersPage} />
               </Content>
             </Layout>
           </Layout>

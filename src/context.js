@@ -1,12 +1,15 @@
 import React from 'react'
 
+
 const AppContext = React.createContext()
 export default AppContext
 
-export const withContext = (...selectors) => WrappedComponent => {
+export const GamesContext = React.createContext()
+
+const createContextGetter = Context => (...selectors) => WrappedComponent => {
   return function(props) {
     return (
-      <AppContext.Consumer>
+      <Context.Consumer>
         {context => {
           const contextProps = Object.keys(context)
             .filter(key => selectors.includes(key))
@@ -17,7 +20,12 @@ export const withContext = (...selectors) => WrappedComponent => {
 
           return <WrappedComponent {...contextProps} {...props} />
         }}
-      </AppContext.Consumer>
+      </Context.Consumer>
     )
   }
 }
+
+export const withContext = createContextGetter(AppContext)
+export const gamesContext = createContextGetter(GamesContext)
+
+
