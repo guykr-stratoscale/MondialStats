@@ -1339,7 +1339,7 @@ callsites@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/callsites/-/callsites-2.0.0.tgz#06eb84f00eea413da86affefacbffb36093b3c50"
 
-camel-case@3.0.x, camel-case@^3.0.0:
+camel-case@3.0.x:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/camel-case/-/camel-case-3.0.0.tgz#ca3c3688a4e9cf3a4cda777dc4dcbc713249cf73"
   dependencies:
@@ -2053,7 +2053,7 @@ d3-random@1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/d3-random/-/d3-random-1.1.0.tgz#6642e506c6fa3a648595d2b2469788a8d12529d3"
 
-d3-scale-chromatic@1, d3-scale-chromatic@1.3.0:
+d3-scale-chromatic@1:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/d3-scale-chromatic/-/d3-scale-chromatic-1.3.0.tgz#7ee38ffcaa7ad55cfed83a6a668aac5570c653c4"
   dependencies:
@@ -6346,13 +6346,6 @@ react-flag-kit@0.2.3:
   resolved "https://registry.yarnpkg.com/react-flag-kit/-/react-flag-kit-0.2.3.tgz#e84c2979418b764f1ef71e5c14340f8d9211c998"
   dependencies:
     prop-types "^15.5.0"
-
-react-icons-kit@^1.1.5:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/react-icons-kit/-/react-icons-kit-1.1.5.tgz#e8103015a0292e9900a2fe071c6cb9ca50d76ae2"
-  dependencies:
-    camel-case "^3.0.0"
-    prop-types "^15.5.8"
 
 react-lazy-load@^3.0.12:
   version "3.0.13"
