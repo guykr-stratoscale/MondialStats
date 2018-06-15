@@ -5,7 +5,7 @@ import { iosFootball } from 'react-icons-kit/ionicons/'
 function PlayerStanding({ player, success = false, score = null, isGoalsSuccess = false }) {
   return (
     <div className={cn('player-standing', { success })}>
-      {score !== null && <span className="score">{score}</span>}
+      {score !== null && <span className="score">{score.toFixed(1)}</span>}
       <span className={cn('name')}>{player.name}</span>
       {isGoalsSuccess && (
         <Icon icon={iosFootball} style={{ verticalAlign: 'middle', marginRight: 5 }} />

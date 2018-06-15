@@ -4,6 +4,9 @@ import PlayerStanding from './player-standing'
 
 function PlayerStandings({ players, games }) {
   const playedGames = games.filter(g => g.wasPlayed())
+  if (!playedGames.size) {
+    return null
+  }
 
   return (
     <div className="player-standing">
@@ -14,7 +17,15 @@ function PlayerStandings({ players, games }) {
           const score = p.score(playedGames)
           const lastBetSuccess = score > p.score(playedGames.butLast())
 
-          return <PlayerStanding key={p.id} player={p} score={score} success={lastBetSuccess} isGoalsSuccess={p.isGoalsSuccess(playedGames.last())} />
+          return (
+            <PlayerStanding
+              key={p.id}
+              player={p}
+              score={score}
+              success={lastBetSuccess}
+              isGoalsSuccess={p.isGoalsSuccess(playedGames.last())}
+            />
+          )
         })}
     </div>
   )

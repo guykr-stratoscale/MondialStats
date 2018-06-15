@@ -35,6 +35,9 @@ h2 {
   transition: all 0.3s;
 }
 .game.was-played .ant-card-bordered {
+  opacity: 0.8;
+}
+.game.is-playing .ant-card-bordered {
   border-color: black;
 }
 .game.selected .ant-card-bordered {

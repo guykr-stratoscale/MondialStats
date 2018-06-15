@@ -13,9 +13,13 @@ class Game extends Record({
   date: null,
   questions: List(),
   answers: List(),
+  status: null,
 }) {
   wasPlayed() {
-    return this.team_a_score !== '?' && this.team_b_score !== '?'
+    return this.status === 'FINISHED'
+  }
+  isPlaying() {
+    return this.status === 'IN_PLAY'
   }
 
   getWinner() {
@@ -38,6 +42,17 @@ export const initGames = () => {
       })
     }),
   )
+}
+
+export const gamesAdaptor = (games, data) => {
+  return games.map((game, i) => {
+    const d = data[i]
+    return game.withMutations(game => {
+      game.status = d.status
+      game.team_a_score = d.result.goalsHomeTeam === null ? '?' : d.result.goalsHomeTeam
+      game.team_b_score = d.result.goalsAwayTeam === null ? '?' : d.result.goalsAwayTeam
+    })
+  })
 }
 
 export default Game

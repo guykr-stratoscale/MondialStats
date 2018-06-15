@@ -1,12 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { initTeams } from './models/team'
-import { initGames } from './models/game'
+import { gamesAdaptor, initGames } from './models/game'
 import { initPlayers } from './models/player'
 import AppContext from './context'
 import BetsPage from './pages/bets'
 import GamesPage from './pages/games'
 import PlayersPage from './pages/players'
+import Poller from './poller'
 import { Icon, Layout, Menu } from 'antd'
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 
@@ -22,6 +23,11 @@ class App extends React.Component {
       : this.setState({ selected_player: null })
   }
 
+  _updateGames = data => {
+    this.setState(state => ({
+      games: gamesAdaptor(state.games, data),
+    }))
+  }
 
   state = {
     sidebar_collapsed: false,
@@ -32,6 +38,7 @@ class App extends React.Component {
     selected_game: null,
 
     selectPlayer: this._selectPlayer,
+    updateGames: this._updateGames,
   }
 
   onCollapse = () => {
@@ -63,7 +70,7 @@ class App extends React.Component {
                     <span>משחקים</span>
                     <Link to="/games" />
                   </Menu.Item>
-                  <Menu.Item key="/players" >
+                  <Menu.Item key="/players">
                     <Icon type="user" />
                     <span>מהמרים</span>
                     <Link to="/players" />
@@ -78,6 +85,7 @@ class App extends React.Component {
             </Layout>
           </Layout>
         </Router>
+        <Poller />
       </AppContext.Provider>
     )
   }

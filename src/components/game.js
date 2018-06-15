@@ -63,6 +63,7 @@ class Game extends Component {
       <div
         className={cn('game', {
           'was-played': game.wasPlayed(),
+          'is-playing': game.isPlaying(),
           selected: game.id === selected_game,
           hidden: selected_game !== null && game.id !== selected_game,
         })}
