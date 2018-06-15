@@ -1,6 +1,6 @@
 const API = {
   getGames: () => {
-    return fetch('http://api.football-data.org/v1/competitions/467/fixtures', {
+    return fetch('https://api.football-data.org/v1/competitions/467/fixtures', {
       headers: {
         'x-auth-token': 'd889d405df01445dba932fe3d61d16b9',
       },
