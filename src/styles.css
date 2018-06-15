@@ -19,6 +19,10 @@
   font-weight: bold;
 }
 
+.recharts-tooltip-wrapper {
+  direction: rtl;
+}
+
 .app-layout {
   min-height: 100vh;
 }

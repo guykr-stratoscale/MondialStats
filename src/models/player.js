@@ -73,7 +73,8 @@ class Player extends Record({
   }
 
   score(games = List()) {
-    return games.reduce((result, game) => result + this.gameScore(game), 0)
+    const score = games.reduce((result, game) => result + this.gameScore(game), 0)
+    return Math.round(score * 10) / 10
   }
 
   isGoalsSuccess(game) {
