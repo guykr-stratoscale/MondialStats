@@ -30,6 +30,7 @@ const PLAYERS = [
       {
         team_b_score: '0',
         team_a_score: '2',
+        answers: [2],
       },
       {
         team_b_score: '0',
@@ -229,6 +230,7 @@ const PLAYERS = [
       {
         team_b_score: '1',
         team_a_score: '1',
+        answers: [1],
       },
       {
         team_b_score: '1',
@@ -428,6 +430,7 @@ const PLAYERS = [
       {
         team_b_score: '2',
         team_a_score: '1',
+        answers: [1],
       },
       {
         team_b_score: '1',
@@ -627,6 +630,7 @@ const PLAYERS = [
       {
         team_b_score: '1',
         team_a_score: '4',
+        answers: [3],
       },
       {
         team_b_score: '1',
@@ -826,6 +830,7 @@ const PLAYERS = [
       {
         team_b_score: '0',
         team_a_score: '2',
+        answers: [1],
       },
       {
         team_b_score: '1',
@@ -1025,6 +1030,7 @@ const PLAYERS = [
       {
         team_b_score: '0',
         team_a_score: '4',
+        answers: [2],
       },
       {
         team_b_score: '1',
@@ -1224,6 +1230,7 @@ const PLAYERS = [
       {
         team_b_score: '1',
         team_a_score: '2',
+        answers: [0],
       },
       {
         team_b_score: '2',
@@ -1423,6 +1430,7 @@ const PLAYERS = [
       {
         team_b_score: '2',
         team_a_score: '3',
+        answers: [0],
       },
       {
         team_b_score: '0',
@@ -1622,6 +1630,7 @@ const PLAYERS = [
       {
         team_b_score: '1',
         team_a_score: '2',
+        answers: [2],
       },
       {
         team_b_score: '0',
@@ -1821,6 +1830,7 @@ const PLAYERS = [
       {
         team_b_score: '2',
         team_a_score: '2',
+        answers: [1],
       },
       {
         team_b_score: '2',
@@ -2020,6 +2030,7 @@ const PLAYERS = [
       {
         team_b_score: '1',
         team_a_score: '0',
+        answers: [1],
       },
       {
         team_b_score: '1',
@@ -2219,6 +2230,7 @@ const PLAYERS = [
       {
         team_b_score: '1',
         team_a_score: '3',
+        answers: [4],
       },
       {
         team_b_score: '2',
@@ -2418,6 +2430,7 @@ const PLAYERS = [
       {
         team_b_score: '0',
         team_a_score: '2',
+        answers: [0],
       },
       {
         team_b_score: '0',

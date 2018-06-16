@@ -277,7 +277,7 @@ export const GAMES = [
     team_a: 'Argentina',
     team_b: 'Iceland',
     questions: [3],
-    answers: [],
+    answers: [0],
   },
   {
     time: '17.06.2018 02:00',

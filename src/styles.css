@@ -196,4 +196,5 @@ h2 {
 
 .player-standing.success .score {
   color: green;
+  font-weight: bold;
 }
