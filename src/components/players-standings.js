@@ -4,6 +4,9 @@ import PlayerStanding from './player-standing'
 
 function PlayerStandings({ players, games }) {
   const playedGames = games.filter(g => g.wasPlayed())
+  const lastPlayedGames = playedGames.butLast()
+  const lastStandings = players.sortBy(p => p.score(lastPlayedGames)).reverse()
+
   if (!playedGames.size) {
     return null
   }
@@ -13,16 +16,17 @@ function PlayerStandings({ players, games }) {
       {players
         .sortBy(p => p.score(playedGames))
         .reverse()
-        .map(p => {
+        .map((p, i) => {
           const score = p.score(playedGames)
-          const lastBetSuccess = score > p.score(playedGames.butLast())
-
+          const lastBetSuccess = score > p.score(lastPlayedGames)
+          const standingChange = lastStandings.indexOf(p) - i
           return (
             <PlayerStanding
               key={p.id}
               player={p}
               score={score}
               success={lastBetSuccess}
+              standingChange={standingChange}
               isGoalsSuccess={p.isGoalsSuccess(playedGames.last())}
               isBonusSuccess={p.isBonusSuccess(playedGames.last())}
             />

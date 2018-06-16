@@ -184,11 +184,12 @@ h2 {
 
 .player-standing {
   direction: rtl;
+  font-size: 15px;
 }
 
 .player-standing .score {
   font-size: 15px;
-  margin-left: 10px;
+  margin-left: 20px;
   width: 40px;
   display: inline-block;
   text-align: left;
@@ -197,4 +198,18 @@ h2 {
 .player-standing.success .score {
   color: green;
   font-weight: bold;
+}
+
+.standing-change {
+  display: inline-block;
+  font-weight: bold;
+  margin-left: 20px;
+  min-width: 40px;
+}
+
+.standing-change.up {
+  color: green;
+}
+.standing-change.down {
+  color: red;
 }
