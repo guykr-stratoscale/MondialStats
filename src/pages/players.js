@@ -7,7 +7,7 @@ class PlayersPage extends Component {
   render() {
     return (
       <Fragment>
-        <h2>המהמרים</h2>
+        <h2>המצב כרגע</h2>
         <PlayerStandings />
         <h2>היסטורית הניקוד</h2>
         <PointsHistory />

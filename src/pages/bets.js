@@ -62,7 +62,7 @@ class BetsPage extends Component {
       <Fragment>
         <h2 dir="rtl">המהמרים</h2>
         <Players />
-        <React.Fragment>{this.getPlayerBets()}</React.Fragment>
+        <span className="player-bets">{this.getPlayerBets()}</span>
         <h2 dir="rtl">ההימורים</h2>
         {this.getRiskChart()}
         <h2 dir="rtl">האלופה</h2>

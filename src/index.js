@@ -46,7 +46,6 @@ class App extends React.Component {
       sidebar_collapsed: !state.sidebar_collapsed,
     }))
   }
-
   render() {
     return (
       <AppContext.Provider value={this.state}>
@@ -57,6 +56,7 @@ class App extends React.Component {
                 style={{ overflow: 'auto', height: '100vh', position: 'fixed', left: 0 }}
                 collapsible
                 collapsed={this.state.sidebar_collapsed}
+                collapsedWidth={60}
                 onCollapse={this.onCollapse}>
                 <div className="logo" />
                 <Menu theme="dark" defaultSelectedKeys={[window.location.pathname]} mode="inline">
@@ -70,17 +70,17 @@ class App extends React.Component {
                     <span>משחקים</span>
                     <Link to="/games" />
                   </Menu.Item>
-                  <Menu.Item key="/players">
-                    <Icon type="user" />
-                    <span>מהמרים</span>
-                    <Link to="/players" />
+                  <Menu.Item key="/score">
+                    <Icon type="bars" />
+                    <span>ניקוד</span>
+                    <Link to="/score" />
                   </Menu.Item>
                 </Menu>
               </Sider>
-              <Content style={{ marginLeft: this.state.sidebar_collapsed ? 80 : 200 }}>
+              <Content style={{ marginLeft: this.state.sidebar_collapsed ? 60 : 200 }}>
                 <Route exact path="/" component={BetsPage} />
                 <Route path="/games" component={GamesPage} />
-                <Route path="/players" component={PlayersPage} />
+                <Route path="/score" component={PlayersPage} />
               </Content>
             </Layout>
           </Layout>

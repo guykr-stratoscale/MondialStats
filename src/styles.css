@@ -118,6 +118,9 @@ h2 {
   display: inline-block;
   margin: 3px 10px;
 }
+.player-bets .bet {
+  width: 220px;
+}
 
 .game-odds {
   position: relative;
