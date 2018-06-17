@@ -8,23 +8,56 @@
   background-position: center;
 }
 
+.ant-menu-horizontal {
+  line-height: 64px;
+}
+.ant-menu-horizontal > .ant-menu-item,
+.ant-menu-horizontal > .ant-menu-submenu {
+  float: right;
+}
+
 .ant-layout-content {
   padding: 20px;
 }
+
+.mobile .ant-layout-content {
+  padding: 0 5px;
+  margin-top: 64px;
+  margin-left: 0;
+}
+
 .ant-layout-header {
   color: white;
 }
+.mobile .ant-layout-header {
+  padding: 0;
+}
+
+.mobile .ant-popover-inner-content {
+  padding: 4px 8px;
+}
+.mobile .ant-card-head-title {
+  padding: 4px 0;
+}
+.mobile .ant-card-body {
+  padding: 4px;
+}
+.mobile .ant-card-head {
+  padding: 0 4px;
+  min-height: 20px;
+}
+
 .ant-popover-title {
   text-align: center;
   font-weight: bold;
 }
 
-.recharts-tooltip-wrapper {
-  direction: rtl;
-}
-
 .app-layout {
   min-height: 100vh;
+}
+
+.recharts-tooltip-wrapper {
+  direction: rtl;
 }
 
 h2 {
@@ -33,6 +66,10 @@ h2 {
 }
 
 /* Games */
+.mobile .games {
+  display: flex;
+  flex-direction: column;
+}
 .game {
   display: inline-block;
   margin: 3px;
@@ -110,6 +147,9 @@ h2 {
   display: table-cell;
   width: 100px;
 }
+.mobile .bet-wrapper .player-name {
+  width: 75px;
+}
 .bet-wrapper .bet {
   display: table-cell;
 }
@@ -130,6 +170,15 @@ h2 {
   margin-left: -25px;
   margin-bottom: 24px;
 }
+.mobile .game-odds {
+  width: inherit;
+  height: 4px;
+  margin-top: -4px;
+  margin-left: -5px;
+  margin-bottom: 24px;
+  margin-right: -4px;
+}
+
 .game-odds > span {
   display: inline-block;
   height: 100%;

@@ -10,11 +10,14 @@ import PlayersPage from './pages/players'
 import Poller from './poller'
 import { Icon, Layout, Menu } from 'antd'
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
+import { isMobile } from 'react-device-detect'
+import cn from 'classnames'
 
 import 'antd/dist/antd.css'
 import './styles.css'
 
-const { Sider, Content } = Layout
+const { Sider, Header, Content } = Layout
+const COLLAPSED_WIDTH = 80
 
 class App extends React.Component {
   _selectPlayer = selected_player => {
@@ -46,38 +49,58 @@ class App extends React.Component {
       sidebar_collapsed: !state.sidebar_collapsed,
     }))
   }
+
+  getMenu() {
+    const MenuWrapper = isMobile ? Header : Sider
+    const wrapperStyle = isMobile
+      ? { position: 'fixed', zIndex: 1, width: '100%' }
+      : { overflow: 'auto', height: '100vh', position: 'fixed', left: 0 }
+
+    const wrapperProps = isMobile
+      ? {}
+      : {
+          collapsible: true,
+          collapsed: this.state.sidebar_collapsed,
+          collapsedWidth: COLLAPSED_WIDTH,
+          onCollapse: this.onCollapse,
+        }
+
+    return (
+      <MenuWrapper style={wrapperStyle} {...wrapperProps}>
+        {!isMobile && <div className="logo" />}
+        <Menu
+          theme="dark"
+          defaultSelectedKeys={[window.location.pathname]}
+          mode={isMobile ? 'horizontal' : 'inline'}>
+          <Menu.Item key="/">
+            <Icon type="heart" />
+            <span>הימורים</span>
+            <Link to="/" />
+          </Menu.Item>
+          <Menu.Item key="/games">
+            <Icon type="notification" />
+            <span>משחקים</span>
+            <Link to="/games" />
+          </Menu.Item>
+          <Menu.Item key="/score">
+            <Icon type="bars" />
+            <span>ניקוד</span>
+            <Link to="/score" />
+          </Menu.Item>
+        </Menu>
+      </MenuWrapper>
+    )
+  }
+
   render() {
     return (
-      <AppContext.Provider value={this.state}>
+      <AppContext.Provider value={this.state} className={cn('app', { mobile: isMobile })}>
         <Router>
-          <Layout className="app-layout">
+          <Layout className={cn('app-layout', { mobile: isMobile })}>
             <Layout>
-              <Sider
-                style={{ overflow: 'auto', height: '100vh', position: 'fixed', left: 0 }}
-                collapsible
-                collapsed={this.state.sidebar_collapsed}
-                collapsedWidth={60}
-                onCollapse={this.onCollapse}>
-                <div className="logo" />
-                <Menu theme="dark" defaultSelectedKeys={[window.location.pathname]} mode="inline">
-                  <Menu.Item key="/">
-                    <Icon type="heart" />
-                    <span>הימורים</span>
-                    <Link to="/" />
-                  </Menu.Item>
-                  <Menu.Item key="/games">
-                    <Icon type="notification" />
-                    <span>משחקים</span>
-                    <Link to="/games" />
-                  </Menu.Item>
-                  <Menu.Item key="/score">
-                    <Icon type="bars" />
-                    <span>ניקוד</span>
-                    <Link to="/score" />
-                  </Menu.Item>
-                </Menu>
-              </Sider>
-              <Content style={{ marginLeft: this.state.sidebar_collapsed ? 60 : 200 }}>
+              {this.getMenu()}
+              <Content
+                style={isMobile ? {} : { marginLeft: this.state.sidebar_collapsed ? COLLAPSED_WIDTH : 200 }}>
                 <Route exact path="/" component={BetsPage} />
                 <Route path="/games" component={GamesPage} />
                 <Route path="/score" component={PlayersPage} />

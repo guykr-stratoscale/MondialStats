@@ -27,7 +27,7 @@ function PlayerStanding({
       {score !== null && <span className="score">{score.toFixed(1)}</span>}
       <StandingChange value={standingChange} />
       <span className={cn('name')}>{player.name}</span>
-      {isGoalsSuccess && <span style={{ verticalAlign: 'middle', marginRight: 5 }}>⚽</span>}
+      {isGoalsSuccess && <span role="img" style={{ verticalAlign: 'middle', marginRight: 5 }} aria-label="goal-success">⚽</span>}
       {isBonusSuccess && (
         <Icon type="question-circle" style={{ verticalAlign: 'middle', marginRight: 5 }} />
       )}

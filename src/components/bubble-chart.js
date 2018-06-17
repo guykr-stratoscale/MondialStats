@@ -17,7 +17,7 @@ import { playerColor } from '../data/players'
 export default function BubbleChart({ data }) {
   return (
     <ResponsiveContainer width="100%" height={400}>
-      <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
+      <ScatterChart margin={{ top: 20, right: 5, bottom: 20, left: 0 }}>
         <XAxis
           dataKey={'risk'}
           type="number"

@@ -20,9 +20,7 @@ function renderTooltip(data) {
 export default function BChart({ data, fill = '#8884d8' }) {
   return (
     <ResponsiveContainer width="100%" height={400}>
-      <BarChart
-        margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
-        data={data}>
+      <BarChart margin={{ top: 20, right: 5, bottom: 20, left: 0 }} data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey={'name'} />
         <YAxis />

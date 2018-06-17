@@ -4,6 +4,7 @@ import { withContext, gamesContext } from '../context'
 import { Card, Popover } from 'antd'
 import cn from 'classnames'
 import GameBets from './game-bets'
+import { isMobile } from 'react-device-detect'
 
 function GameOdds({ game }) {
   const total = game.draw_factor + game.team_a_factor + game.team_b_factor
@@ -72,8 +73,9 @@ class Game extends Component {
           content={<GameBets game={game} />}
           title="הימורים"
           trigger="click"
+          overlayClassName={isMobile ? 'mobile' : ''}
           visible={game.id === selected_game}>
-          <Card title={this._title()} style={{ width: 300 }}>
+          <Card title={this._title()} style={{ width: isMobile ? '100%' : 300 }}>
             <GameOdds game={game} />
             <p className="score">
               {game.team_a_score} : {game.team_b_score}
