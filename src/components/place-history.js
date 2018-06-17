@@ -9,7 +9,7 @@ function PlaceHistory({ players = List(), games = List() }) {
     const sortedPlayers = players.sortBy(p => p.score(playedGames.take(i + 1)))
 
     const result = players.reduce((result, p) => {
-      result[p.id] =  sortedPlayers.indexOf(p)
+      result[p.id] = sortedPlayers.indexOf(p)
       return result
     }, {})
     return {

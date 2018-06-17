@@ -1,5 +1,12 @@
 import * as d3 from 'd3'
 
+const assignBets = (game_bets, game_index) => (p, i) => {
+  const players_guess = game_bets.find(g => g.player_id === i).team
+  const bets = p.bets
+  bets[game_index].answers = [players_guess]
+  return { ...p, bets }
+}
+
 const PLAYERS = [
   {
     name: 'קרמני',
@@ -2604,6 +2611,60 @@ const PLAYERS = [
   },
 ]
 
-export default PLAYERS
+const game_11_guesses = [
+  {
+    player_id: 7,
+    team: 'Brazil',
+  },
+  {
+    player_id: 6,
+    team: 'Brazil',
+  },
+  {
+    player_id: 2,
+    team: 'Brazil',
+  },
+  {
+    player_id: 0,
+    team: 'Brazil',
+  },
+  {
+    player_id: 12,
+    team: 'Brazil',
+  },
+  {
+    player_id: 11,
+    team: 'Brazil',
+  },
+  {
+    player_id: 8,
+    team: 'Brazil',
+  },
+  {
+    player_id: 4,
+    team: 'Brazil',
+  },
+  {
+    player_id: 3,
+    team: 'Brazil',
+  },
+  {
+    player_id: 10,
+    team: 'Switzerland',
+  },
+  {
+    player_id: 5,
+    team: 'Brazil',
+  },
+  {
+    player_id: 1,
+    team: 'Brazil',
+  },
+  {
+    player_id: 9,
+    team: 'Switzerland',
+  },
+]
+export default PLAYERS.map(assignBets(game_11_guesses, 10))
 
 export const playerColor = d3.scaleSequential(d3.interpolateSinebow).domain([0, PLAYERS.length])
