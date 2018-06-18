@@ -7,25 +7,27 @@ export default AppContext
 export const GamesContext = React.createContext()
 
 const createContextGetter = Context => (...selectors) => WrappedComponent => {
-  return function(props) {
-    return (
-      <Context.Consumer>
-        {context => {
-          const contextProps = Object.keys(context)
-            .filter(key => selectors.includes(key))
-            .reduce((result, key) => {
-              result[key] = context[key]
-              return result
-            }, {})
+  return class WrappingComponent extends React.Component {
+    render() {
+      return (
+        <Context.Consumer>
+          {context => {
+            const contextProps = Object.keys(context)
+              .filter(key => selectors.includes(key))
+              .reduce((result, key) => {
+                result[key] = context[key]
+                return result
+              }, {})
 
-          return <WrappedComponent {...contextProps} {...props} />
-        }}
-      </Context.Consumer>
-    )
+            return <WrappedComponent {...contextProps} {...this.props} />
+          }}
+        </Context.Consumer>
+      )
+    }
   }
 }
 
-export const withContext = createContextGetter(AppContext)
+export const withContext  = createContextGetter(AppContext)
 export const gamesContext = createContextGetter(GamesContext)
 
 
