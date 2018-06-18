@@ -12,7 +12,7 @@ function PlayerStandings({ players, games }) {
   }
 
   return (
-    <div className="player-standing">
+    <ol className="player-standings">
       {players
         .sortBy(p => p.score(playedGames))
         .reverse()
@@ -32,7 +32,7 @@ function PlayerStandings({ players, games }) {
             />
           )
         })}
-    </div>
+    </ol>
   )
 }
 

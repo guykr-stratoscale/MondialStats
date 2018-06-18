@@ -220,6 +220,16 @@ h2 {
 }
 
 /* Player */
+.players {
+  direction: rtl;
+  display: inline-block;
+}
+.player-bets {
+  display: inline-block;
+}
+.player-games {
+  direction: rtl;
+}
 .player .name:hover {
   cursor: pointer;
   text-decoration: underline;
@@ -227,24 +237,34 @@ h2 {
 .player .name {
   font-weight: bold;
   font-size: 14px;
-  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .player.selected {
   font-weight: bold;
 }
 
-.player-standing {
+.player-standings {
   direction: rtl;
   font-size: 15px;
 }
-
+.player-standing {
+  padding-right: 10px;
+}
 .player-standing .score {
   font-size: 15px;
   margin-left: 20px;
   width: 40px;
   display: inline-block;
   text-align: left;
+}
+
+.player-standing .ball {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 0 3px
 }
 
 .player-standing.success .score {

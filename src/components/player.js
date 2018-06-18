@@ -13,9 +13,6 @@ function Player({ player, selected_player, selectPlayer }) {
         style={{ color: playerColor(player.id) }}>
         {player.name}
       </span>
-      <span className="details">
-        ({player.champion}, {player.scorer})
-      </span>
     </div>
   )
 }

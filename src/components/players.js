@@ -5,7 +5,7 @@ import { withContext } from '../context'
 
 function Players({ players = List() }) {
   return (
-    <ol>
+    <ol className="players">
       {players.sortBy(p => p.name).map(player => (
         <li key={player.id}>
           <Player player={player} />
