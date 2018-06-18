@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react'
-import Players from '../components/players'
 import BubbleChart from '../components/bubble-chart'
 import BarChart from '../components/bar-chart'
 import { withContext } from '../context'

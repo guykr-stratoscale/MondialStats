@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import Team from './team'
 import { withContext, gamesContext } from '../context'
-import { Card, Popover } from 'antd'
+import { Icon, Card, Popover } from 'antd'
 import cn from 'classnames'
 import GameBets from './game-bets'
 import { isMobile } from 'react-device-detect'
@@ -42,6 +42,7 @@ class Game extends Component {
     return (
       <Fragment>
         <div>{game.date.format('DD/MM/YY HH:mm')}</div>
+        {game.wasPlayed() && <Icon type="check-circle" className="played-icon" />}
         <Team
           team={teams.get(game.team_a)}
           tiny={false}
