@@ -25,8 +25,8 @@ export default function BubbleChart({ data }) {
           label="הימור נגד יחס ההימורים"
           tick={false}
         />
-        <YAxis dataKey={'goals'} type="number" name="שערים" tick={false}>
-          <Label value="כמות שערים" angle="270" offset={-20} />
+        <YAxis dataKey={'goals'} type="number" name="שערים" tick={false} width={20}>
+          <Label value="כמות שערים" angle="270" position="insideLeft" />
         </YAxis>
         <ZAxis type="category" dataKey="name" name="שם" />
         <Tooltip cursor={{ strokeDasharray: '3 3' }} />

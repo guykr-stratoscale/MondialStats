@@ -23,7 +23,7 @@ export default function BChart({ data, fill = '#8884d8' }) {
       <BarChart margin={{ top: 20, right: 5, bottom: 20, left: 0 }} data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey={'name'} />
-        <YAxis />
+        <YAxis width={20}/>
         <ZAxis dataKey="who" />
         <Tooltip cursor={{ strokeDasharray: '3 3' }} label="who" content={renderTooltip} />
         <Bar dataKey="value" fill={fill} name="מצביעים" />

@@ -80,8 +80,8 @@ class Chart extends Component {
         <LineChart margin={{ top: 20, right: 5, bottom: 20, left: 0 }} data={data}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" allowDuplicatedCategory={false} type="category" name="משחק" />
-          <YAxis>
-            <Label value="נקודות" angle="270" offset={-30} />
+          <YAxis width={40}>
+            <Label value="נקודות" angle="270" position="insideLeft"  />
           </YAxis>
           <Tooltip itemSorter={tooltipSorter} />
           {players.map((p, i) => {

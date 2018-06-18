@@ -261,6 +261,10 @@ h2 {
 .player-standing {
   padding-right: 10px;
 }
+.player-standing:first-of-type .name {
+  font-weight: bold;
+}
+
 .mobile .player-standing {
   padding-right: 0;
 }
