@@ -1,7 +1,7 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Game from './game'
-import {withContext} from '../context'
-import {List} from 'immutable'
+import { withContext } from '../context'
+import { List } from 'immutable'
 import scrollToComponent from 'react-scroll-to-component'
 
 class Games extends Component {
@@ -11,8 +11,9 @@ class Games extends Component {
   }
 
   componentDidMount() {
-    const {games = List()} = this.props
-    const game             = games.find(g => g.status === 'IN_PLAY') || games.find(g => g.date.toDate() > new Date())
+    const { games = List() } = this.props
+    const game =
+      games.find(g => g.status === 'IN_PLAY') || games.find(g => g.date.toDate() > new Date())
     if (game) {
       scrollToComponent(this.game_refs[game.id])
     }
@@ -23,8 +24,14 @@ class Games extends Component {
   }
 
   render() {
-    const {games = List()} = this.props
-    return <div className="games">{games.map(game => <Game ref={this._gameRef.bind(null, game.id)} key={game.id} game={game}/>)}</div>
+    const { games = List() } = this.props
+    return (
+      <div className="games">
+        {games.map(game => (
+          <Game ref={this._gameRef.bind(null, game.id)} key={game.id} game={game} />
+        ))}
+      </div>
+    )
   }
 }
 

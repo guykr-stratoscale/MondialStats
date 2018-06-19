@@ -81,7 +81,7 @@ class Chart extends Component {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" allowDuplicatedCategory={false} type="category" name="משחק" />
           <YAxis width={40}>
-            <Label value="נקודות" angle="270" position="insideLeft"  />
+            <Label value="נקודות" angle="270" position="insideLeft" />
           </YAxis>
           <Tooltip itemSorter={tooltipSorter} />
           {players.map((p, i) => {

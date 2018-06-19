@@ -1,13 +1,11 @@
 import React from 'react'
-import {withContext} from '../context'
+import { withContext } from '../context'
 import PlayerStanding from './player-standing'
 
-function PlayerStandings({players, games, include_active_game_results}) {
-  const playedGames     = games.filter(
-    g => g.wasPlayed() || (include_active_game_results && g.isPlaying()),
-  )
+function PlayerStandings({ players, getScoredGames }) {
+  const playedGames = getScoredGames()
   const lastPlayedGames = playedGames.butLast()
-  const lastStandings   = players.sortBy(p => p.score(lastPlayedGames)).reverse()
+  const lastStandings = players.sortBy(p => p.score(lastPlayedGames)).reverse()
 
   if (!playedGames.size) {
     return null
@@ -19,8 +17,8 @@ function PlayerStandings({players, games, include_active_game_results}) {
         .sortBy(p => p.score(playedGames))
         .reverse()
         .map((p, i) => {
-          const score          = p.score(playedGames)
-          const lastScore      = p.score(lastPlayedGames)
+          const score = p.score(playedGames)
+          const lastScore = p.score(lastPlayedGames)
           const standingChange = lastStandings.indexOf(p) - i
 
           return (
@@ -40,4 +38,4 @@ function PlayerStandings({players, games, include_active_game_results}) {
   )
 }
 
-export default withContext('players', 'games', 'include_active_game_results')(PlayerStandings)
+export default withContext('players', 'getScoredGames')(PlayerStandings)

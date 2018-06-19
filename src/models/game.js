@@ -48,6 +48,7 @@ export const gamesAdaptor = (games, data) => {
   return games.map((game, i) => {
     const d = data[i]
     return game.withMutations(game => {
+      //       game.status = i === 16 ? 'IN_PLAY' : d.status
       game.status = d.status
       game.team_a_score = d.result.goalsHomeTeam === null ? '?' : d.result.goalsHomeTeam
       game.team_b_score = d.result.goalsAwayTeam === null ? '?' : d.result.goalsAwayTeam

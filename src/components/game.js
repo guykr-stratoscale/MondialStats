@@ -12,6 +12,7 @@ export const GameScore = withContext('teams')(({ game, teams }) => {
       <Team team={teams.get(game.team_a)} tiny={true} showName={false} />
       {game.team_a_score} : {game.team_b_score}
       <Team team={teams.get(game.team_b)} tiny={true} showName={false} />
+      <span className="game-no">משחק {game.id + 1}</span>
     </div>
   )
 })
@@ -67,6 +68,7 @@ class Game extends Component {
           tiny={false}
           className={cn({ winner: game.getWinner() === game.team_b })}
         />
+        <span className="game-no">{game.id + 1}</span>
       </Fragment>
     )
   }

@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 const AppContext = React.createContext()
 export default AppContext
 
@@ -27,7 +26,5 @@ const createContextGetter = Context => (...selectors) => WrappedComponent => {
   }
 }
 
-export const withContext  = createContextGetter(AppContext)
+export const withContext = createContextGetter(AppContext)
 export const gamesContext = createContextGetter(GamesContext)
-
-

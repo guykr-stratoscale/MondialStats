@@ -67,12 +67,22 @@
 h2 {
   text-align: right;
   margin: 10px 0;
+  height: 46px;
 }
 
-h2 .disclaimer {
+.active-toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 0 auto;
+  height: 50px;
+  width: 80px;
+}
+
+.active-toggle .disclaimer {
   font-size: 10px;
   opacity: 0.8;
-  margin-right: 5px;
+  display: block;
 }
 
 /* Games */
@@ -150,7 +160,45 @@ h2 .disclaimer {
   font-size: 20px;
   color: green;
 }
+.game .game-no {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
 
+.score-header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+.score-header h2 {
+  white-space: nowrap;
+  margin: 0;
+}
+.score-header .nav-links {
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+}
+.score-header .nav-link {
+  margin: 0 10px;
+  font-size: 25px;
+}
+
+.score-header .nav-link.disabled {
+  visibility: hidden;
+}
+.score-header .nav-link:hover {
+  cursor: pointer;
+  color: dodgerblue;
+}
+.game-score .game-no {
+  width: 60px;
+  display: inline-block;
+  text-align: center;
+}
 .game-score {
   display: inline-block;
   font-size: 13px;
@@ -340,7 +388,7 @@ h2 .disclaimer {
   color: green;
   font-weight: bold;
 }
-.player-standing.success .score .score-change{
+.player-standing.success .score .score-change {
   font-size: 10px;
   font-weight: normal;
 }
@@ -356,10 +404,4 @@ h2 .disclaimer {
 }
 .standing-change.down {
   color: red;
-}
-
-.active-toggle {
-  position: absolute;
-  left: 10px;
-  top: 18px;
 }

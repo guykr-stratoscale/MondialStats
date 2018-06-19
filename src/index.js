@@ -38,6 +38,49 @@ class App extends React.Component {
     }))
   }
 
+  _getScoredGames = (no_replay = false) => {
+    const { games, include_active_game_results, replay_game_id } = this.state
+    let result = games.filter(g => g.status === 'FINISHED')
+    if (include_active_game_results) {
+      const activeGame = games.find(g => g.status === 'IN_PLAY')
+      if (activeGame) {
+        result = result.push(activeGame)
+      }
+    }
+
+    if (replay_game_id !== null && !no_replay) {
+      result = result.filter(g => g.id <= replay_game_id)
+    }
+
+    return result
+  }
+
+  _setReplayGame = (game_id = null) => {
+    this.setState(state => ({ replay_game_id: game_id }))
+  }
+
+  _replayBack = () => {
+    let { replay_game_id } = this.state
+    if (replay_game_id === null) {
+      replay_game_id = this._getScoredGames().last().id
+    }
+    this._setReplayGame(Math.max(replay_game_id - 1, 0))
+  }
+
+  _replayForward = () => {
+    let { replay_game_id } = this.state
+    if (replay_game_id === null) {
+      replay_game_id = this._getScoredGames().last().id
+    }
+    const replay_id = Math.min(replay_game_id + 1, this._getScoredGames(true).size - 1)
+    this._setReplayGame(replay_id === this._getScoredGames(true).size - 1 ? null : replay_id)
+  }
+
+  _getActiveGame = () => {
+    const { games } = this.state
+    return games.find(g => g.status === 'IN_PLAY')
+  }
+
   state = {
     sidebar_collapsed: false,
     include_active_game_results: false,
@@ -46,10 +89,16 @@ class App extends React.Component {
     players: initPlayers(),
     selected_player: null,
     selected_game: null,
+    replay_game_id: null,
 
+    getScoredGames: this._getScoredGames,
     selectPlayer: this._selectPlayer,
     updateGames: this._updateGames,
     toggleActiveResults: this._toggleIncludeActiveResults,
+    setReplayGame: this._setReplayGame,
+    replayBack: this._replayBack,
+    replayForward: this._replayForward,
+    getActiveGame: this._getActiveGame,
   }
 
   onCollapse = () => {
