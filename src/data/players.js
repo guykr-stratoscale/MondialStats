@@ -2667,57 +2667,57 @@ const game_11_guesses = [
 ]
 const game_16_answers = [
   {
-    "player_id": 7,
-    "answer": "black"
+    player_id: 7,
+    answer: 'black',
   },
   {
-    "player_id": 6,
-    "answer": "black"
+    player_id: 6,
+    answer: 'black',
   },
   {
-    "player_id": 2,
-    "answer": "white"
+    player_id: 2,
+    answer: 'white',
   },
   {
-    "player_id": 0,
-    "answer": "white"
+    player_id: 0,
+    answer: 'white',
   },
   {
-    "player_id": 12,
-    "answer": "white"
+    player_id: 12,
+    answer: 'white',
   },
   {
-    "player_id": 11,
-    "answer": "black"
+    player_id: 11,
+    answer: 'black',
   },
   {
-    "player_id": 8,
-    "answer": "white"
+    player_id: 8,
+    answer: 'white',
   },
   {
-    "player_id": 4,
-    "answer": "white"
+    player_id: 4,
+    answer: 'white',
   },
   {
-    "player_id": 3,
-    "answer": "black"
+    player_id: 3,
+    answer: 'black',
   },
   {
-    "player_id": 10,
-    "answer": "white"
+    player_id: 10,
+    answer: 'white',
   },
   {
-    "player_id": 5,
-    "answer": "white"
+    player_id: 5,
+    answer: 'white',
   },
   {
-    "player_id": 1,
-    "answer": "white"
+    player_id: 1,
+    answer: 'white',
   },
   {
-    "player_id": 9,
-    "answer": "white"
-  }
+    player_id: 9,
+    answer: 'white',
+  },
 ]
 export default PLAYERS.map(assignBets(game_11_guesses, 10)).map(assignBets(game_16_answers, 15))
 
