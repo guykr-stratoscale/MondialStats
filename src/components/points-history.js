@@ -3,8 +3,10 @@ import { List } from 'immutable'
 import { withContext } from '../context'
 import LineChart from './line-chart'
 
-function PointsHistory({ players = List(), games = List() }) {
-  const playedGames = games.filter(g => g.wasPlayed())
+function PointsHistory({ players = List(), games = List(), include_active_game_results }) {
+  const playedGames = games.filter(
+    g => g.wasPlayed() || (include_active_game_results && g.isPlaying()),
+  )
   const data = playedGames.map((game, i) => {
     const result = players.reduce((result, p) => {
       result[p.id] = p.score(playedGames.take(i + 1))
@@ -19,4 +21,4 @@ function PointsHistory({ players = List(), games = List() }) {
   return <LineChart data={data.toJS()} players={players} />
 }
 
-export default withContext('players', 'games')(PointsHistory)
+export default withContext('players', 'games', 'include_active_game_results')(PointsHistory)

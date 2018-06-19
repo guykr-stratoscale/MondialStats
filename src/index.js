@@ -6,7 +6,7 @@ import { initPlayers } from './models/player'
 import AppContext from './context'
 import BetsPage from './pages/bets'
 import GamesPage from './pages/games'
-import PlayersPage from './pages/players'
+import ScorePage from './pages/score'
 import Poller from './poller'
 import { Icon, Layout, Menu } from 'antd'
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
@@ -32,8 +32,15 @@ class App extends React.Component {
     }))
   }
 
+  _toggleIncludeActiveResults = () => {
+    this.setState(state => ({
+      include_active_game_results: !state.include_active_game_results,
+    }))
+  }
+
   state = {
     sidebar_collapsed: false,
+    include_active_game_results: false,
     teams: initTeams(),
     games: initGames(),
     players: initPlayers(),
@@ -42,6 +49,7 @@ class App extends React.Component {
 
     selectPlayer: this._selectPlayer,
     updateGames: this._updateGames,
+    toggleActiveResults: this._toggleIncludeActiveResults,
   }
 
   onCollapse = () => {
@@ -73,8 +81,8 @@ class App extends React.Component {
           defaultSelectedKeys={[window.location.pathname]}
           mode={isMobile ? 'horizontal' : 'inline'}>
           <Menu.Item key="/">
-            <Icon type="heart" />
-            <span>הימורים</span>
+            <Icon type="bars" />
+            <span>ניקוד</span>
             <Link to="/" />
           </Menu.Item>
           <Menu.Item key="/games">
@@ -82,10 +90,10 @@ class App extends React.Component {
             <span>משחקים</span>
             <Link to="/games" />
           </Menu.Item>
-          <Menu.Item key="/score">
-            <Icon type="bars" />
-            <span>ניקוד</span>
-            <Link to="/score" />
+          <Menu.Item key="/bets">
+            <Icon type="heart" />
+            <span>הימורים</span>
+            <Link to="/bets" />
           </Menu.Item>
         </Menu>
       </MenuWrapper>
@@ -100,10 +108,14 @@ class App extends React.Component {
             <Layout>
               {this.getMenu()}
               <Content
-                style={isMobile ? {} : { marginLeft: this.state.sidebar_collapsed ? COLLAPSED_WIDTH : 200 }}>
-                <Route exact path="/" component={BetsPage} />
+                style={
+                  isMobile
+                    ? {}
+                    : { marginLeft: this.state.sidebar_collapsed ? COLLAPSED_WIDTH : 200 }
+                }>
+                <Route exact path="/" component={ScorePage} />
+                <Route path="/bets" component={BetsPage} />
                 <Route path="/games" component={GamesPage} />
-                <Route path="/score" component={PlayersPage} />
               </Content>
             </Layout>
           </Layout>

@@ -2,8 +2,10 @@ import React from 'react'
 import { withContext } from '../context'
 import PlayerStanding from './player-standing'
 
-function PlayerStandings({ players, games }) {
-  const playedGames = games.filter(g => g.wasPlayed())
+function PlayerStandings({ players, games, include_active_game_results }) {
+  const playedGames = games.filter(
+    g => g.wasPlayed() || (include_active_game_results && g.isPlaying()),
+  )
   const lastPlayedGames = playedGames.butLast()
   const lastStandings = players.sortBy(p => p.score(lastPlayedGames)).reverse()
 
@@ -36,4 +38,4 @@ function PlayerStandings({ players, games }) {
   )
 }
 
-export default withContext('players', 'games')(PlayerStandings)
+export default withContext('players', 'games', 'include_active_game_results')(PlayerStandings)

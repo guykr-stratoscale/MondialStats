@@ -25,21 +25,23 @@ function PlayerStanding({
 }) {
   return (
     <li className={cn('player-standing', { success })}>
-      {score !== null && <span className="score">{score.toFixed(1)}</span>}
-      <StandingChange value={standingChange} />
       <span className="ball" style={{ background: playerColor(player.id) }} />
       <span className={cn('name')}>{player.name}</span>
-      {isGoalsSuccess && (
-        <span
-          role="img"
-          style={{ verticalAlign: 'middle', marginRight: 5 }}
-          aria-label="goal-success">
-          ⚽
-        </span>
-      )}
-      {isBonusSuccess && (
-        <Icon type="question-circle" style={{ verticalAlign: 'middle', marginRight: 5 }} />
-      )}
+      <StandingChange value={standingChange} />
+      {score !== null && <span className="score">{score.toFixed(1)}</span>}
+      <span className="icons">
+        {isGoalsSuccess && (
+          <span
+            role="img"
+            style={{ verticalAlign: 'middle', marginRight: 5 }}
+            aria-label="goal-success">
+            ⚽
+          </span>
+        )}
+        {isBonusSuccess && (
+          <Icon type="question-circle" style={{ verticalAlign: 'middle', marginRight: 5 }} />
+        )}
+      </span>
     </li>
   )
 }

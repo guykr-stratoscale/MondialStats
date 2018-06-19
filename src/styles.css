@@ -20,7 +20,8 @@
 }
 
 .ant-layout-content {
-  padding: 20px;
+  padding: 20px 60px;
+  position: relative;
 }
 
 .mobile .ant-layout-content {
@@ -64,11 +65,21 @@
 }
 
 h2 {
-  text-align: center;
+  text-align: right;
   margin: 10px 0;
 }
 
+h2 .disclaimer {
+  font-size: 10px;
+  opacity: 0.8;
+  margin-right: 5px;
+}
+
 /* Games */
+.games {
+  text-align: right;
+}
+
 .mobile .games {
   display: flex;
   flex-direction: column;
@@ -86,6 +97,18 @@ h2 {
 }
 .game.selected .ant-card-bordered {
   border-color: dodgerblue;
+}
+.game.selected .game-odds {
+  transform: scaleY(3);
+}
+.game.selected .game-odds .factor {
+  transform: scaleY(0.33) translateY(-30px);
+  display: block;
+  color: white;
+}
+
+.mobile .game.selected .game-odds .factor {
+  transform: scaleY(0.33) translateY(-32px);
 }
 
 .game.hidden {
@@ -126,6 +149,11 @@ h2 {
   top: 10px;
   font-size: 20px;
   color: green;
+}
+
+.game-score {
+  display: inline-block;
+  font-size: 13px;
 }
 
 /* Game Bets */
@@ -179,7 +207,16 @@ h2 {
   margin-top: -24px;
   margin-left: -25px;
   margin-bottom: 24px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 25px;
+  transition: all 0.3s;
 }
+.game-odds .factor {
+  color: transparent;
+}
+
 .mobile .game-odds {
   width: inherit;
   height: 4px;
@@ -229,6 +266,10 @@ h2 {
   margin-right: 3px;
 }
 
+.team.tiny.no-name .flag {
+  margin-right: 0;
+}
+
 /* Player */
 .players {
   direction: rtl;
@@ -254,13 +295,25 @@ h2 {
   font-weight: bold;
 }
 
+.player-standings-wrapper {
+  direction: rtl;
+}
+
 .player-standings {
   direction: rtl;
   font-size: 15px;
+  display: table;
+  -webkit-padding-start: 0;
 }
 .player-standing {
-  padding-right: 10px;
+  display: table-row;
 }
+
+.player-standing > * {
+  display: table-cell;
+  padding: 2px 5px;
+}
+
 .player-standing:first-of-type .name {
   font-weight: bold;
 }
@@ -271,8 +324,6 @@ h2 {
 
 .player-standing .score {
   font-size: 15px;
-  margin-left: 15px;
-  width: 40px;
   display: inline-block;
   text-align: left;
 }
@@ -302,4 +353,10 @@ h2 {
 }
 .standing-change.down {
   color: red;
+}
+
+.active-toggle {
+  position: absolute;
+  left: 10px;
+  top: 18px;
 }

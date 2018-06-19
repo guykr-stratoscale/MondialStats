@@ -6,6 +6,16 @@ import cn from 'classnames'
 import GameBets from './game-bets'
 import { isMobile } from 'react-device-detect'
 
+export const GameScore = withContext('teams')(({ game, teams }) => {
+  return (
+    <div className="game-score">
+      <Team team={teams.get(game.team_a)} tiny={true} showName={false} />
+      {game.team_a_score} : {game.team_b_score}
+      <Team team={teams.get(game.team_b)} tiny={true} showName={false} />
+    </div>
+  )
+})
+
 function GameOdds({ game }) {
   const total = game.draw_factor + game.team_a_factor + game.team_b_factor
 
@@ -16,22 +26,25 @@ function GameOdds({ game }) {
         style={{
           width: `${(game.team_b_factor / total) * 100}%`,
           left: 0,
-        }}
-      />
+        }}>
+        <span className="factor">{game.team_a_factor}</span>
+      </span>
       <span
         className="draw-odds"
         style={{
           width: `${(game.draw_factor / total) * 100}%`,
           left: `${(game.team_b_factor / total) * 100}%`,
-        }}
-      />
+        }}>
+        <span className="factor">{game.draw_factor}</span>
+      </span>
       <span
         className="team-a-odds"
         style={{
           width: `${(game.team_a_factor / total) * 100}%`,
           left: `${((game.team_b_factor + game.draw_factor) / total) * 100}%`,
-        }}
-      />
+        }}>
+        <span className="factor">{game.team_b_factor}</span>
+      </span>
     </div>
   )
 }
