@@ -1,7 +1,7 @@
 import * as d3 from 'd3'
 
 const assignBets = (game_bets, game_index) => (p, i) => {
-  const players_guess = game_bets.find(g => g.player_id === i).team
+  const players_guess = game_bets.find(g => g.player_id === i).answer
   const bets = p.bets
   bets[game_index].answers = [players_guess]
   return { ...p, bets }
@@ -2614,57 +2614,111 @@ const PLAYERS = [
 const game_11_guesses = [
   {
     player_id: 7,
-    team: 'Brazil',
+    answer: 'Brazil',
   },
   {
     player_id: 6,
-    team: 'Brazil',
+    answer: 'Brazil',
   },
   {
     player_id: 2,
-    team: 'Brazil',
+    answer: 'Brazil',
   },
   {
     player_id: 0,
-    team: 'Brazil',
+    answer: 'Brazil',
   },
   {
     player_id: 12,
-    team: 'Brazil',
+    answer: 'Brazil',
   },
   {
     player_id: 11,
-    team: 'Brazil',
+    answer: 'Brazil',
   },
   {
     player_id: 8,
-    team: 'Brazil',
+    answer: 'Brazil',
   },
   {
     player_id: 4,
-    team: 'Brazil',
+    answer: 'Brazil',
   },
   {
     player_id: 3,
-    team: 'Brazil',
+    answer: 'Brazil',
   },
   {
     player_id: 10,
-    team: 'Switzerland',
+    answer: 'Switzerland',
   },
   {
     player_id: 5,
-    team: 'Brazil',
+    answer: 'Brazil',
   },
   {
     player_id: 1,
-    team: 'Brazil',
+    answer: 'Brazil',
   },
   {
     player_id: 9,
-    team: 'Switzerland',
+    answer: 'Switzerland',
   },
 ]
-export default PLAYERS.map(assignBets(game_11_guesses, 10))
+const game_16_answers = [
+  {
+    "player_id": 7,
+    "answer": "black"
+  },
+  {
+    "player_id": 6,
+    "answer": "black"
+  },
+  {
+    "player_id": 2,
+    "answer": "white"
+  },
+  {
+    "player_id": 0,
+    "answer": "white"
+  },
+  {
+    "player_id": 12,
+    "answer": "white"
+  },
+  {
+    "player_id": 11,
+    "answer": "black"
+  },
+  {
+    "player_id": 8,
+    "answer": "white"
+  },
+  {
+    "player_id": 4,
+    "answer": "white"
+  },
+  {
+    "player_id": 3,
+    "answer": "black"
+  },
+  {
+    "player_id": 10,
+    "answer": "white"
+  },
+  {
+    "player_id": 5,
+    "answer": "white"
+  },
+  {
+    "player_id": 1,
+    "answer": "white"
+  },
+  {
+    "player_id": 9,
+    "answer": "white"
+  }
+]
+export default PLAYERS.map(assignBets(game_11_guesses, 10)).map(assignBets(game_16_answers, 15))
 
 export const playerColor = d3.scaleSequential(d3.interpolateSinebow).domain([0, PLAYERS.length])

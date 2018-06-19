@@ -340,7 +340,10 @@ h2 .disclaimer {
   color: green;
   font-weight: bold;
 }
-
+.player-standing.success .score .score-change{
+  font-size: 10px;
+  font-weight: normal;
+}
 .standing-change {
   display: inline-block;
   font-weight: bold;
