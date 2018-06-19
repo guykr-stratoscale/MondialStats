@@ -18,6 +18,7 @@ function StandingChange({ value }) {
 function PlayerStanding({
   player,
   standingChange,
+  standing,
   success = false,
   score = null,
   isGoalsSuccess = false,
@@ -25,6 +26,7 @@ function PlayerStanding({
 }) {
   return (
     <li className={cn('player-standing', { success })}>
+      <span>{standing}.</span>
       <span className="ball" style={{ background: playerColor(player.id) }} />
       <span className={cn('name')}>{player.name}</span>
       <StandingChange value={standingChange} />

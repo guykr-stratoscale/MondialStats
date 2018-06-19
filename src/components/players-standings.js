@@ -27,6 +27,7 @@ function PlayerStandings({ players, games, include_active_game_results }) {
               key={p.id}
               player={p}
               score={score}
+              standing={i + 1}
               success={lastBetSuccess}
               standingChange={standingChange}
               isGoalsSuccess={p.isGoalsSuccess(playedGames.last())}
