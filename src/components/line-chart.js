@@ -7,7 +7,6 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-  Label,
   Legend,
 } from 'recharts'
 import { playerColor } from '../data/players'
@@ -80,9 +79,7 @@ class Chart extends Component {
         <LineChart margin={{ top: 20, right: 5, bottom: 20, left: 0 }} data={data}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" allowDuplicatedCategory={false} type="category" name="משחק" />
-          <YAxis width={40}>
-            <Label value="נקודות" angle="270" position="insideLeft" />
-          </YAxis>
+          <YAxis width={20} />
           <Tooltip itemSorter={tooltipSorter} />
           {players.map((p, i) => {
             return (

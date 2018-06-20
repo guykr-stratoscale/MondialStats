@@ -64,6 +64,9 @@
   direction: rtl;
 }
 
+.recharts-wrapper {
+  font-size: 11px;
+}
 .reorder-wrapper-item {
   position: relative;
   transition: top 1s ease-in;

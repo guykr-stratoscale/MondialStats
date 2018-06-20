@@ -33,6 +33,30 @@ class App extends React.Component {
     }))
   }
 
+  _updatePlayerAnswers = data => {
+    const { players: currentPlayers, games: currentGames } = this.state
+    const players = currentPlayers.map(p => {
+      data.forEach(d => {
+        p = p.setIn(
+          ['bets', d.game_id, 'answers', 0],
+          d.answers.find(a => a.player_id === p.id).answer,
+        )
+      })
+      return p
+    })
+    const games = currentGames.map(g => {
+      const d = data.find(d => d.game_id === g.id)
+      if (d) {
+        return g.setIn(['answers', 0], d.question_answer).setIn(['questions', 0], d.question_points)
+      }
+      return g
+    })
+    this.setState(state => ({
+      players,
+      games,
+    }))
+  }
+
   _getScoredGames = (no_replay = false) => {
     const { games, replay_game_id } = this.state
     let result = games.filter(g => SCORED_STATUSES.includes(g.status))
@@ -82,6 +106,7 @@ class App extends React.Component {
     getScoredGames: this._getScoredGames,
     selectPlayer: this._selectPlayer,
     updateGames: this._updateGames,
+    updatePlayerAnswers: this._updatePlayerAnswers,
     setReplayGame: this._setReplayGame,
     replayBack: this._replayBack,
     replayForward: this._replayForward,

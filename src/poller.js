@@ -11,6 +11,11 @@ class Poller extends Component {
       console.log('poller.js@got data: ', data)
       this.props.updateGames(data.fixtures)
     })
+
+    API.getAnswers().then(data => {
+      console.log('poller.js@got answers: ', data)
+      this.props.updatePlayerAnswers(data)
+    })
   }
 
   _startPolling() {
@@ -38,4 +43,4 @@ class Poller extends Component {
   }
 }
 
-export default withContext('updateGames')(Poller)
+export default withContext('updateGames', 'updatePlayerAnswers')(Poller)
