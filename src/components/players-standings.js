@@ -1,6 +1,7 @@
 import React from 'react'
 import { withContext } from '../context'
 import PlayerStanding from './player-standing'
+import AnimateReorder from 'react-flip-move'
 
 function PlayerStandings({ players, getScoredGames }) {
   const playedGames = getScoredGames()
@@ -12,7 +13,7 @@ function PlayerStandings({ players, getScoredGames }) {
   }
 
   return (
-    <ol className="player-standings">
+    <AnimateReorder className="player-standings" staggerDurationBy={80} staggerDelayBy={80}>
       {players
         .sortBy(p => p.score(playedGames))
         .reverse()
@@ -34,7 +35,7 @@ function PlayerStandings({ players, getScoredGames }) {
             />
           )
         })}
-    </ol>
+    </AnimateReorder>
   )
 }
 

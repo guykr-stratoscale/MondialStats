@@ -18,6 +18,7 @@ import './styles.css'
 
 const { Sider, Header, Content } = Layout
 const COLLAPSED_WIDTH = 80
+const SCORED_STATUSES = ['FINISHED', 'IN_PLAY']
 
 class App extends React.Component {
   _selectPlayer = selected_player => {
@@ -32,21 +33,9 @@ class App extends React.Component {
     }))
   }
 
-  _toggleIncludeActiveResults = () => {
-    this.setState(state => ({
-      include_active_game_results: !state.include_active_game_results,
-    }))
-  }
-
   _getScoredGames = (no_replay = false) => {
-    const { games, include_active_game_results, replay_game_id } = this.state
-    let result = games.filter(g => g.status === 'FINISHED')
-    if (include_active_game_results) {
-      const activeGame = games.find(g => g.status === 'IN_PLAY')
-      if (activeGame) {
-        result = result.push(activeGame)
-      }
-    }
+    const { games, replay_game_id } = this.state
+    let result = games.filter(g => SCORED_STATUSES.includes(g.status))
 
     if (replay_game_id !== null && !no_replay) {
       result = result.filter(g => g.id <= replay_game_id)
@@ -83,7 +72,6 @@ class App extends React.Component {
 
   state = {
     sidebar_collapsed: false,
-    include_active_game_results: false,
     teams: initTeams(),
     games: initGames(),
     players: initPlayers(),
@@ -94,7 +82,6 @@ class App extends React.Component {
     getScoredGames: this._getScoredGames,
     selectPlayer: this._selectPlayer,
     updateGames: this._updateGames,
-    toggleActiveResults: this._toggleIncludeActiveResults,
     setReplayGame: this._setReplayGame,
     replayBack: this._replayBack,
     replayForward: this._replayForward,

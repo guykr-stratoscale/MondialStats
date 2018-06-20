@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, Component } from 'react'
 import cn from 'classnames'
 import { Icon } from 'antd'
 import { playerColor } from '../data/players'
@@ -14,44 +14,42 @@ function StandingChange({ value }) {
     </span>
   )
 }
+class PlayerStanding extends Component {
+  render() {
+    const {
+      player,
+      standingChange,
+      standing,
+      score = null,
+      lastScore = null,
+      isGoalsSuccess = false,
+      isBonusSuccess = false,
+    } = this.props
 
-function PlayerStanding({
-  player,
-  standingChange,
-  standing,
-  score = null,
-  lastScore = null,
-  isGoalsSuccess = false,
-  isBonusSuccess = false,
-}) {
-  const success = score > lastScore
-  return (
-    <li className={cn('player-standing', { success })}>
-      <span>{standing}.</span>
-      <span className="ball" style={{ background: playerColor(player.id) }} />
-      <span className={cn('name')}>{player.name}</span>
-      <StandingChange value={standingChange} />
-      {score !== null && (
-        <span className="score">
-          {score.toFixed(1)}{' '}
-          {success && <span className="score-change"> + {(score - lastScore).toFixed(1)}</span>}
-        </span>
-      )}
-      <span className="icons">
-        {isGoalsSuccess && (
-          <span
-            role="img"
-            style={{ verticalAlign: 'middle', marginRight: 5 }}
-            aria-label="goal-success">
-            ⚽
+    const success = score > lastScore
+    return (
+      <li className={cn('player-standing', { success })} key={player.id}>
+        <span>{standing}.</span>
+        <span className="ball" style={{ background: playerColor(player.id) }} />
+        <span className={cn('name')}>{player.name}</span>
+        <StandingChange value={standingChange} />
+        {score !== null && (
+          <span className="score">
+            {score.toFixed(1)}{' '}
+            {success && <span className="score-change"> + {(score - lastScore).toFixed(1)}</span>}
           </span>
         )}
-        {isBonusSuccess && (
-          <Icon type="question-circle" style={{ verticalAlign: 'middle', marginRight: 5 }} />
-        )}
-      </span>
-    </li>
-  )
+        <span className="icons">
+          {isGoalsSuccess && (
+            <span role="img" aria-label="goal-success" className="anticon unicode-icon">
+              ⚽
+            </span>
+          )}
+          {isBonusSuccess && <Icon type="question-circle" />}
+        </span>
+      </li>
+    )
+  }
 }
 
 export default PlayerStanding

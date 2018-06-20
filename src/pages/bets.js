@@ -5,6 +5,10 @@ import { withContext } from '../context'
 import Bet from '../components/bet'
 
 class BetsPage extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
+
   getPlayerBets = () => {
     const { selected_player, players } = this.props
     const player = players.get(selected_player)

@@ -15,7 +15,7 @@ class Games extends Component {
     const game =
       games.find(g => g.status === 'IN_PLAY') || games.find(g => g.date.toDate() > new Date())
     if (game) {
-      scrollToComponent(this.game_refs[game.id])
+      scrollToComponent(this.game_refs[game.id], { duration: 10 })
     }
   }
 

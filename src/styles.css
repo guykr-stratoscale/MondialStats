@@ -64,6 +64,11 @@
   direction: rtl;
 }
 
+.reorder-wrapper-item {
+  position: relative;
+  transition: top 1s ease-in;
+}
+
 h2 {
   text-align: right;
   margin: 10px 0;
@@ -171,12 +176,32 @@ h2 {
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  padding-top: 10px;
+  padding: 10px 0;
 }
 .score-header h2 {
   white-space: nowrap;
   margin: 0;
 }
+
+.score-header h2 .disclaimer {
+  font-size: 10px;
+  opacity: 0.8;
+  display: block;
+}
+.score-header h2 .disclaimer .label {
+  background: dodgerblue;
+  color: white;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.score-header h2 .disclaimer i {
+  margin-left: 10px;
+  display: inline-block;
+  color: dodgerblue;
+  font-weight: bold;
+}
+
 .score-header .nav-links {
   flex: 1 0 auto;
   display: flex;
@@ -197,7 +222,8 @@ h2 {
 .game-score .game-no {
   width: 60px;
   display: inline-block;
-  text-align: center;
+  text-align: right;
+  margin-right: 5px;
 }
 .game-score {
   display: inline-block;
@@ -352,9 +378,18 @@ h2 {
   font-size: 15px;
   display: table;
   -webkit-padding-start: 0;
+  width: 100%;
 }
 .player-standing {
   display: table-row;
+  height: 28px;
+}
+.player-standing .anticon {
+  margin-left: 5px;
+}
+
+.player-standing .unicode-icon {
+  display: inline-block;
 }
 
 .player-standing > * {
