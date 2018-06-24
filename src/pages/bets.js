@@ -3,6 +3,7 @@ import BubbleChart from '../components/bubble-chart'
 import BarChart from '../components/bar-chart'
 import { withContext } from '../context'
 import Bet from '../components/bet'
+import Players from '../components/players'
 
 class BetsPage extends Component {
   componentDidMount() {
@@ -13,7 +14,7 @@ class BetsPage extends Component {
     const { selected_player, players } = this.props
     const player = players.get(selected_player)
     if (player) {
-      return player.bets.map((bet, i) => <Bet key={i} bet={bet} player={player} />)
+      return (<ol>{player.bets.map((bet, i) => <li key={i}><Bet key={i} bet={bet} player={player}/></li>)}</ol>)
     }
   }
 
@@ -63,6 +64,11 @@ class BetsPage extends Component {
   render() {
     return (
       <Fragment>
+        <h2 dir="rtl">המנחשים</h2>
+        <span className="bets">
+          <Players/>
+          {this.getPlayerBets()}
+        </span>
         <h2 dir="rtl">ההימורים</h2>
         {this.getRiskChart()}
         <h2 dir="rtl">האלופה</h2>

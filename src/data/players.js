@@ -6,6 +6,12 @@ const assignBets = (game_bets, game_index) => (p, i) => {
   bets[game_index].answers = [players_guess]
   return { ...p, bets }
 }
+const fixGameOrder = (player) => {
+  const germanyGame = player.bets[27]
+  player.bets[27] = player.bets[28]
+  player.bets[28] = germanyGame
+  return player
+}
 
 const PLAYERS = [
   {
@@ -2719,6 +2725,6 @@ const game_16_answers = [
     answer: 'white',
   },
 ]
-export default PLAYERS.map(assignBets(game_11_guesses, 10)).map(assignBets(game_16_answers, 15))
+export default PLAYERS.map(fixGameOrder).map(assignBets(game_11_guesses, 10)).map(assignBets(game_16_answers, 15))
 
 export const playerColor = d3.scaleSequential(d3.interpolateSinebow).domain([0, PLAYERS.length])

@@ -443,3 +443,22 @@ h2 {
 .standing-change.down {
   color: red;
 }
+
+.bets {
+  display: block;
+}
+.bets .players {
+  -webkit-padding-start: 0;
+  display: block;
+}
+.bets .players li{
+  display: inline-block;
+}
+
+.bets .players .player .name.selected {
+  font-weight: bold;
+  background: darkgray;
+}
+.bets .players .player .name {
+  font-weight: normal;
+}
