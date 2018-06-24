@@ -1,4 +1,5 @@
 import * as d3 from 'd3'
+
 const ANSWERS_ROW = 4
 const SIGNIFICANT_COLUMN = 2
 const GAME_NO_ROW = 1
@@ -20,7 +21,7 @@ const API = {
   },
   getAnswers: () => {
     return fetch(
-      'https://docs.google.com/spreadsheets/d/e/2PACX-1vSB3qoqyFZRzaDL8v8a24j35IQjWCPYSpE2oJGNc4Q1b6gUNIrvuFio6KUXnXbv8J3vhyJWDMv1Aft8/pub?output=csv',
+      `https://docs.google.com/spreadsheets/d/e/2PACX-1vSB3qoqyFZRzaDL8v8a24j35IQjWCPYSpE2oJGNc4Q1b6gUNIrvuFio6KUXnXbv8J3vhyJWDMv1Aft8/pub?output=csv&cb=${Date.now()}`,
     )
       .then(response => response.text())
       .then(text => d3.csvParseRows(text))

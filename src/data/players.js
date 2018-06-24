@@ -1328,7 +1328,7 @@ const PLAYERS = [
         team_a_score: '2',
       },
       {
-        team_b_score: '2',
+        team_b_score: '0',
         team_a_score: '2',
       },
       {
