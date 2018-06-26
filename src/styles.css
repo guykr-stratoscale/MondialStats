@@ -451,14 +451,35 @@ h2 {
   -webkit-padding-start: 0;
   display: block;
 }
-.bets .players li{
+
+.bets .player-bets .bet {
+  margin: 0;
+}
+
+.mobile .bets .player-bets {
+  columns: 1;
+  -webkit-columns: 1;
+  -moz-columns: 1;
+  list-style-position: inherit;
+
+}
+.bets .player-bets {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  list-style-position: inside;
+}
+
+
+.bets .players li {
   display: inline-block;
 }
 
 .bets .players .player .name.selected {
   font-weight: bold;
-  background: darkgray;
+  background: #5b5b5b54;
 }
 .bets .players .player .name {
   font-weight: normal;
+  padding: 2px 4px;
 }

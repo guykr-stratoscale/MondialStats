@@ -16,7 +16,7 @@ class ScorePage extends Component {
     window.scrollTo(0, 0)
   }
   render() {
-    const { getScoredGames, replayBack, replayForward, replay_game_id, getActiveGame } = this.props
+    const { getScoredGames, getReplayGame, replayBack, replayForward } = this.props
 
     const games = getScoredGames()
     if (!games.size) {
@@ -24,6 +24,7 @@ class ScorePage extends Component {
     }
 
     const lastScoredGame = getScoredGames().last()
+    const replayGame     = getReplayGame()
 
     return (
       <Fragment>
@@ -31,7 +32,7 @@ class ScorePage extends Component {
           <span className="nav-links">
             <span
               className={cn('nav-link', {
-                disabled: replay_game_id === 0,
+                disabled: replayGame.id === 0,
               })}>
               <Icon type="caret-left" onClick={replayBack} />
             </span>
@@ -45,8 +46,7 @@ class ScorePage extends Component {
           </span>
           <h2>
             הדירוג
-            {getActiveGame() &&
-              lastScoredGame.id === getActiveGame().id && (
+            {replayGame.status !== 'FINISHED' && (
                 <span className="disclaimer">
                   <span className="label">תוצאה לא סופית</span>
                 </span>
@@ -68,5 +68,5 @@ export default withContext(
   'replay_game_id',
   'replayBack',
   'replayForward',
-  'getActiveGame',
+  'getReplayGame',
 )(ScorePage)

@@ -89,9 +89,9 @@ class App extends React.Component {
     this._setReplayGame(replay_id === this._getScoredGames(true).size - 1 ? null : replay_id)
   }
 
-  _getActiveGame = () => {
-    const { games } = this.state
-    return games.find(g => g.status === 'IN_PLAY')
+  _getCurrentGame = () => {
+    const { games, replay_game_id } = this.state
+    return games.find(g => g.id === replay_game_id) || this._getScoredGames().last()
   }
 
   state = {
@@ -103,14 +103,14 @@ class App extends React.Component {
     selected_game: null,
     replay_game_id: null,
 
-    getScoredGames: this._getScoredGames,
-    selectPlayer: this._selectPlayer,
-    updateGames: this._updateGames,
+    getScoredGames:      this._getScoredGames,
+    selectPlayer:        this._selectPlayer,
+    updateGames:         this._updateGames,
     updatePlayerAnswers: this._updatePlayerAnswers,
-    setReplayGame: this._setReplayGame,
-    replayBack: this._replayBack,
-    replayForward: this._replayForward,
-    getActiveGame: this._getActiveGame,
+    setReplayGame:       this._setReplayGame,
+    replayBack:          this._replayBack,
+    replayForward:       this._replayForward,
+    getReplayGame:       this._getCurrentGame,
   }
 
   onCollapse = () => {

@@ -14,7 +14,7 @@ class BetsPage extends Component {
     const { selected_player, players } = this.props
     const player = players.get(selected_player)
     if (player) {
-      return (<ol>{player.bets.map((bet, i) => <li key={i}><Bet key={i} bet={bet} player={player}/></li>)}</ol>)
+      return (<ol className="player-bets">{player.bets.map((bet, i) => <li key={i}><Bet key={i} bet={bet} player={player}/></li>)}</ol>)
     }
   }
 
