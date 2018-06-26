@@ -10,6 +10,11 @@ const fixGameOrder = (player) => {
   const germanyGame = player.bets[27]
   player.bets[27] = player.bets[28]
   player.bets[28] = germanyGame
+
+  const peruGame = player.bets[36]
+  player.bets[36] = player.bets[37]
+  player.bets[37] = peruGame
+
   return player
 }
 

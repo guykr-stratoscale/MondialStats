@@ -435,13 +435,13 @@ export const GAMES = [
   },
   {
     time: '27.06.2018 00:00',
-    team_a: 'Australia',
-    team_b: 'Peru',
+    team_a: 'Denmark',
+    team_b: 'France',
   },
   {
     time: '27.06.2018 00:00',
-    team_a: 'Denmark',
-    team_b: 'France',
+    team_a: 'Australia',
+    team_b: 'Peru',
   },
   {
     time: '27.06.2018 04:00',
