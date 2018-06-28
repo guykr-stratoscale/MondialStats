@@ -485,13 +485,13 @@ export const GAMES = [
   },
   {
     time: '29.06.2018 04:00',
-    team_a: 'England',
-    team_b: 'Belgium',
+    team_a: 'Panama',
+    team_b: 'Tunisia',
   },
   {
     time: '29.06.2018 04:00',
-    team_a: 'Panama',
-    team_b: 'Tunisia',
+    team_a: 'England',
+    team_b: 'Belgium',
   },
 ].map((game, i) => {
   return {

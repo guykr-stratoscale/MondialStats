@@ -24,7 +24,7 @@ class ScorePage extends Component {
     }
 
     const lastScoredGame = getScoredGames().last()
-    const replayGame     = getReplayGame()
+    const replayGame = getReplayGame()
 
     return (
       <Fragment>
@@ -47,10 +47,10 @@ class ScorePage extends Component {
           <h2>
             הדירוג
             {replayGame.status !== 'FINISHED' && (
-                <span className="disclaimer">
-                  <span className="label">תוצאה לא סופית</span>
-                </span>
-              )}
+              <span className="disclaimer">
+                <span className="label">תוצאה לא סופית</span>
+              </span>
+            )}
           </h2>
         </div>
         <div className="player-standings-wrapper">

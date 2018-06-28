@@ -103,14 +103,14 @@ class App extends React.Component {
     selected_game: null,
     replay_game_id: null,
 
-    getScoredGames:      this._getScoredGames,
-    selectPlayer:        this._selectPlayer,
-    updateGames:         this._updateGames,
+    getScoredGames: this._getScoredGames,
+    selectPlayer: this._selectPlayer,
+    updateGames: this._updateGames,
     updatePlayerAnswers: this._updatePlayerAnswers,
-    setReplayGame:       this._setReplayGame,
-    replayBack:          this._replayBack,
-    replayForward:       this._replayForward,
-    getReplayGame:       this._getCurrentGame,
+    setReplayGame: this._setReplayGame,
+    replayBack: this._replayBack,
+    replayForward: this._replayForward,
+    getReplayGame: this._getCurrentGame,
   }
 
   onCollapse = () => {

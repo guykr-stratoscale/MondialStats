@@ -14,7 +14,15 @@ class BetsPage extends Component {
     const { selected_player, players } = this.props
     const player = players.get(selected_player)
     if (player) {
-      return (<ol className="player-bets">{player.bets.map((bet, i) => <li key={i}><Bet key={i} bet={bet} player={player}/></li>)}</ol>)
+      return (
+        <ol className="player-bets">
+          {player.bets.map((bet, i) => (
+            <li key={i}>
+              <Bet key={i} bet={bet} player={player} />
+            </li>
+          ))}
+        </ol>
+      )
     }
   }
 
@@ -66,7 +74,7 @@ class BetsPage extends Component {
       <Fragment>
         <h2 dir="rtl">המנחשים</h2>
         <span className="bets">
-          <Players/>
+          <Players />
           {this.getPlayerBets()}
         </span>
         <h2 dir="rtl">ההימורים</h2>

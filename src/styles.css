@@ -461,7 +461,6 @@ h2 {
   -webkit-columns: 1;
   -moz-columns: 1;
   list-style-position: inherit;
-
 }
 .bets .player-bets {
   columns: 2;
@@ -469,7 +468,6 @@ h2 {
   -moz-columns: 2;
   list-style-position: inside;
 }
-
 
 .bets .players li {
   display: inline-block;
