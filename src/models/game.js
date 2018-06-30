@@ -1,5 +1,7 @@
-import { GAMES } from '../data/games'
+import { GAMES, FACTORS } from '../data/games'
 import { Record, List, fromJS } from 'immutable'
+import { TEAMS } from '../data/teams'
+import moment from 'moment'
 
 class Game extends Record({
   id: 0,
@@ -44,16 +46,44 @@ export const initGames = () => {
   )
 }
 
+// export const gamesAdaptor = (games, data) => {
+//   return games.map((game, i) => {
+//     const d = data[i]
+//     return game.withMutations(game => {
+//       // game.status       = [34, 35].includes(i) ? 'IN_PLAY' : d.status
+//       game.status = d.status
+//       game.team_a_score = d.result.goalsHomeTeam === null ? '?' : d.result.goalsHomeTeam
+//       game.team_b_score = d.result.goalsAwayTeam === null ? '?' : d.result.goalsAwayTeam
+//     })
+//   })
+// }
+
+// TODO: add factors here
 export const gamesAdaptor = (games, data) => {
-  return games.map((game, i) => {
-    const d = data[i]
-    return game.withMutations(game => {
-      // game.status       = [34, 35].includes(i) ? 'IN_PLAY' : d.status
-      game.status = d.status
-      game.team_a_score = d.result.goalsHomeTeam === null ? '?' : d.result.goalsHomeTeam
-      game.team_b_score = d.result.goalsAwayTeam === null ? '?' : d.result.goalsAwayTeam
+  return List(data)
+    .filter(d => d.status !== 'SCHEDULED')
+    .map((d, i) => {
+      const { team_a: team_a_factor = 1, team_b: team_b_factor = 1 } = FACTORS[i] || {}
+      const game = games.get(
+        i,
+        new Game({
+          id: i,
+          date: moment(d.date),
+          team_a_factor,
+          team_b_factor,
+        }),
+      )
+      return game.withMutations(game => {
+        // game.status       = [34, 35].includes(i) ? 'IN_PLAY' : d.status
+        game.status = d.status
+        game.team_a_score = d.result.goalsHomeTeam === null ? '?' : d.result.goalsHomeTeam
+        game.team_b_score = d.result.goalsAwayTeam === null ? '?' : d.result.goalsAwayTeam
+        const team_a = TEAMS.find(team => team.name === d.homeTeamName) || {}
+        const team_b = TEAMS.find(team => team.name === d.awayTeamName) || {}
+        game.team_a = team_a.id
+        game.team_b = team_b.id
+      })
     })
-  })
 }
 
 export default Game

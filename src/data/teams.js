@@ -796,7 +796,7 @@ const lookup = [
     code: 'ZA',
   },
   {
-    name: 'South Korea',
+    name: 'Korea Republic',
     code: 'KR',
   },
   {
@@ -966,7 +966,7 @@ export const TEAMS = [
   { name: 'Iran', region: 'Asia' },
   { name: 'Japan', region: 'Asia' },
   { name: 'Saudi Arabia', region: 'Asia' },
-  { name: 'South Korea', region: 'Asia' },
+  { name: 'Korea Republic', region: 'Asia' },
   { name: 'Egypt', region: 'Africa' },
   { name: 'Morocco', region: 'Africa' },
   { name: 'Nigeria', region: 'Africa' },

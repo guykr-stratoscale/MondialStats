@@ -1,7 +1,7 @@
 import moment from 'moment'
 import { TEAMS } from './teams'
 
-const FACTORS = [
+export const FACTORS = [
   {
     team_b: 13,
     team_a: 1.35,
@@ -242,6 +242,38 @@ const FACTORS = [
     team_a: 3.55,
     draw: 3.35,
   },
+  {
+    team_b: 3.1,
+    team_a: 2.25,
+  },
+  {
+    team_b: 2.8,
+    team_a: 2.6,
+  },
+  {
+    team_b: 5.9,
+    team_a: 1.55,
+  },
+  {
+    team_b: 4.9,
+    team_a: 1.95,
+  },
+  {
+    team_b: 6.5,
+    team_a: 1.4,
+  },
+  {
+    team_b: 6.1,
+    team_a: 1.6,
+  },
+  {
+    team_b: 2.5,
+    team_a: 3.0,
+  },
+  {
+    team_b: 2.7,
+    team_a: 2.5,
+  },
 ]
 
 export const GAMES = [
@@ -309,7 +341,7 @@ export const GAMES = [
   {
     time: '18.06.2018 22:00',
     team_a: 'Sweden',
-    team_b: 'South Korea',
+    team_b: 'Korea Republic',
   },
   {
     time: '19.06.2018 01:00',
@@ -390,7 +422,7 @@ export const GAMES = [
   },
   {
     time: '24.06.2018 01:00',
-    team_a: 'South Korea',
+    team_a: 'Korea Republic',
     team_b: 'Mexico',
   },
   {
@@ -460,7 +492,7 @@ export const GAMES = [
   },
   {
     time: '28.06.2018 00:00',
-    team_a: 'South Korea',
+    team_a: 'Korea Republic',
     team_b: 'Germany',
   },
   {

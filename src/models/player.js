@@ -6,6 +6,7 @@ const Bet = Record({
   game: 0,
   team_a_score: 0,
   team_b_score: 0,
+  winner: null,
   answers: List(),
 })
 
@@ -24,32 +25,44 @@ class Player extends Record({
     }
 
     const bet = this.bets.get(game.id)
+    if (!bet) {
+      return score
+    }
+
     const is_game_draw = game.team_a_score === game.team_b_score
     const is_team_a_winner = game.team_a_score > game.team_b_score
     const is_team_b_winner = game.team_a_score < game.team_b_score
+    const game_winner = is_team_a_winner ? game.team_a : game.team_b
 
     const is_bet_draw = bet.team_a_score === bet.team_b_score
 
-    const toto_points =
-      (is_game_draw && is_bet_draw) ||
-      (is_team_a_winner && bet.team_a_score > bet.team_b_score) ||
-      (is_team_b_winner && bet.team_b_score > bet.team_a_score)
-        ? 2
-        : 0
+    const winner_bet = bet.winner !== null
+    if (winner_bet) {
+      score =
+        (bet.winner === game_winner ? 4 : 0) *
+        (is_team_a_winner ? game.team_a_factor : game.team_b_factor)
+    } else {
+      const toto_points =
+        (is_game_draw && is_bet_draw) ||
+        (is_team_a_winner && bet.team_a_score > bet.team_b_score) ||
+        (is_team_b_winner && bet.team_b_score > bet.team_a_score)
+          ? 2
+          : 0
 
-    if (toto_points) {
-      const goals_points =
-        game.team_a_score === bet.team_a_score && game.team_b_score === bet.team_b_score ? 1 : 0
+      if (toto_points) {
+        const goals_points =
+          game.team_a_score === bet.team_a_score && game.team_b_score === bet.team_b_score ? 1 : 0
 
-      const factor = is_game_draw
-        ? game.draw_factor
-        : is_team_a_winner
-          ? game.team_a_factor
-          : is_team_b_winner
-            ? game.team_b_factor
-            : 1
+        const factor = is_game_draw
+          ? game.draw_factor
+          : is_team_a_winner
+            ? game.team_a_factor
+            : is_team_b_winner
+              ? game.team_b_factor
+              : 1
 
-      score = (toto_points + goals_points) * factor
+        score = (toto_points + goals_points) * factor
+      }
     }
 
     game.questions.forEach((q, i) => {
@@ -83,6 +96,9 @@ class Player extends Record({
     }
 
     const bet = this.bets.get(game.id)
+    if (!bet) {
+      return false
+    }
     return game.team_a_score === bet.team_a_score && game.team_b_score === bet.team_b_score
   }
   isBonusSuccess(game) {
