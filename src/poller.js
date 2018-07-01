@@ -10,12 +10,13 @@ class Poller extends Component {
     API.getGames().then(data => {
       console.log('poller.js@got data: ', data)
       this.props.updateGames(data.fixtures)
+
+      API.getAnswers().then(data => {
+        console.log('poller.js@got answers: ', data)
+        this.props.updatePlayerAnswers(data)
+      })
     })
 
-    API.getAnswers().then(data => {
-      console.log('poller.js@got answers: ', data)
-      this.props.updatePlayerAnswers(data)
-    })
   }
 
   _startPolling() {
