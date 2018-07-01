@@ -29,10 +29,10 @@ class Player extends Record({
       return score
     }
 
-    const is_game_draw     = game.team_a_score === game.team_b_score
+    const is_game_draw = game.team_a_score === game.team_b_score
     const is_team_a_winner = game.team_a_score > game.team_b_score
     const is_team_b_winner = game.team_a_score < game.team_b_score
-    const game_winner      = is_team_a_winner ? game.team_a : is_team_b_winner ? game.team_b : null
+    const game_winner = is_team_a_winner ? game.team_a : is_team_b_winner ? game.team_b : null
 
     const is_bet_draw = bet.team_a_score === bet.team_b_score
 

@@ -16,7 +16,6 @@ class Poller extends Component {
         this.props.updatePlayerAnswers(data)
       })
     })
-
   }
 
   _startPolling() {

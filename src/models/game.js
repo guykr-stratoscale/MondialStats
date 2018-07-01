@@ -78,6 +78,14 @@ export const gamesAdaptor = (games, data) => {
         game.status = d.status
         game.team_a_score = d.result.goalsHomeTeam === null ? '?' : d.result.goalsHomeTeam
         game.team_b_score = d.result.goalsAwayTeam === null ? '?' : d.result.goalsAwayTeam
+        if (d.result.extraTime) {
+          game.team_a_score = d.result.extraTime.goalsHomeTeam
+          game.team_b_score = d.result.extraTime.goalsAwayTeam
+        }
+        if (d.result.penaltyShootout) {
+          game.team_a_score = d.result.penaltyShootout.goalsHomeTeam
+          game.team_b_score = d.result.penaltyShootout.goalsAwayTeam
+        }
         const team_a = TEAMS.find(team => team.name === d.homeTeamName) || {}
         const team_b = TEAMS.find(team => team.name === d.awayTeamName) || {}
         game.team_a = team_a.id
