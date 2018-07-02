@@ -13,8 +13,7 @@ class Games extends Component {
   componentDidMount() {
     const { games = List() } = this.props
     const game =
-            games.findLast(g => g.status === 'IN_PLAY') ||
-            games.findLast(g => g.status === 'FINISHED')
+      games.findLast(g => g.status === 'IN_PLAY') || games.findLast(g => g.status === 'FINISHED')
 
     if (game) {
       scrollToComponent(this.game_refs[game.id], { duration: 10 })
