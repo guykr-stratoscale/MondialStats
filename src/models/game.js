@@ -61,35 +61,37 @@ export const initGames = () => {
 // TODO: add factors here
 export const gamesAdaptor = (games, data) => {
   return List(data)
-    .filter(d => d.status !== 'SCHEDULED')
+    // .filter(d => d.status !== 'SCHEDULED')
     .map((d, i) => {
-      const { team_a: team_a_factor = 1, team_b: team_b_factor = 1 } = FACTORS[i] || {}
+      const { team_a: team_a_factor = 1, team_b: team_b_factor = 1, draw: draw_factor = 0 } = FACTORS[i] || {}
+
       const game = games.get(
         i,
         new Game({
-          id: i,
+          id:   i,
           date: moment(d.date),
           team_a_factor,
           team_b_factor,
+          draw_factor,
         }),
       )
       return game.withMutations(game => {
         // game.status       = [34, 35].includes(i) ? 'IN_PLAY' : d.status
-        game.status = d.status
-        game.team_a_score = d.result.goalsHomeTeam === null ? '?' : d.result.goalsHomeTeam
-        game.team_b_score = d.result.goalsAwayTeam === null ? '?' : d.result.goalsAwayTeam
-        if (d.result.extraTime) {
-          game.team_a_score = d.result.extraTime.goalsHomeTeam
-          game.team_b_score = d.result.extraTime.goalsAwayTeam
+        game.status       = d.status
+        game.team_a_score = d.score.fullTime.homeTeam === null ? '?' : d.score.fullTime.homeTeam
+        game.team_b_score = d.score.fullTime.awayTeam === null ? '?' : d.score.fullTime.awayTeam
+        if (d.score.extraTime.homeTeam !== null) {
+          game.team_a_score = d.score.extraTime.homeTeam
+          game.team_b_score = d.score.extraTime.awayTeam
         }
-        if (d.result.penaltyShootout) {
-          game.team_a_score = d.result.penaltyShootout.goalsHomeTeam
-          game.team_b_score = d.result.penaltyShootout.goalsAwayTeam
+        if (d.score.penalties.homeTeam !== null) {
+          game.team_a_score = d.score.penalties.homeTeam
+          game.team_b_score = d.score.penalties.awayTeam
         }
-        const team_a = TEAMS.find(team => team.name === d.homeTeamName) || {}
-        const team_b = TEAMS.find(team => team.name === d.awayTeamName) || {}
-        game.team_a = team_a.id
-        game.team_b = team_b.id
+        const team_a = TEAMS.find(team => team.name === d.homeTeam.name) || {}
+        const team_b = TEAMS.find(team => team.name === d.awayTeam.name) || {}
+        game.team_a  = team_a.id
+        game.team_b  = team_b.id
       })
     })
 }

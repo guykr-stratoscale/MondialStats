@@ -27,13 +27,13 @@ const fixGameOrder = player => {
   player.bets[27] = player.bets[28]
   player.bets[28] = germanyGame
 
-  const peruGame = player.bets[36]
-  player.bets[36] = player.bets[37]
-  player.bets[37] = peruGame
+  const germanySKoreaGame = player.bets[40]
+  player.bets[40]         = player.bets[41]
+  player.bets[41]         = germanySKoreaGame
 
-  const englandGame = player.bets[46]
-  player.bets[46] = player.bets[47]
-  player.bets[47] = englandGame
+  // const englandGame = player.bets[46]
+  // player.bets[46] = player.bets[47]
+  // player.bets[47] = englandGame
 
   return player
 }
@@ -3120,7 +3120,8 @@ const round_16_bets = [
   },
 ]
 
-export default PLAYERS.map(fixGameOrder)
+export default PLAYERS
+  .map(fixGameOrder)
   .map(assignBets(game_11_guesses, 10))
   .map(assignBets(game_16_answers, 15))
   .map(assignFormBets(round_16_bets))

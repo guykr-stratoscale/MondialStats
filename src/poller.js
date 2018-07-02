@@ -9,7 +9,7 @@ class Poller extends Component {
     console.log('poller.js@_doPolling: ')
     API.getGames().then(data => {
       console.log('poller.js@got data: ', data)
-      this.props.updateGames(data.fixtures)
+      this.props.updateGames(data.matches)
 
       API.getAnswers().then(data => {
         console.log('poller.js@got answers: ', data)

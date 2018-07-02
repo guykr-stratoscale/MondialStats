@@ -183,14 +183,14 @@ export const FACTORS = [
     draw: 5,
   },
   {
-    team_b: 2.35,
-    team_a: 3.6,
-    draw: 3.5,
-  },
-  {
     team_b: 1.75,
     team_a: 6,
     draw: 3.8,
+  },
+  {
+    team_b: 2.35,
+    team_a: 3.6,
+    draw: 3.5,
   },
   {
     team_b: 1.9,
@@ -203,14 +203,14 @@ export const FACTORS = [
     draw: 4.5,
   },
   {
-    team_b: 3.2,
-    team_a: 2.5,
-    draw: 3.3,
-  },
-  {
     team_b: 1.3,
     team_a: 13,
     draw: 5.85,
+  },
+  {
+    team_b: 3.2,
+    team_a: 2.5,
+    draw: 3.3,
   },
   {
     team_b: 1.45,
@@ -233,14 +233,14 @@ export const FACTORS = [
     draw: 3.4,
   },
   {
-    team_b: 2.6,
-    team_a: 3,
-    draw: 3.4,
-  },
-  {
     team_b: 2.35,
     team_a: 3.55,
     draw: 3.35,
+  },
+  {
+    team_b: 2.6,
+    team_a: 3,
+    draw: 3.4,
   },
   {
     team_b: 3.1,
@@ -467,18 +467,13 @@ export const GAMES = [
   },
   {
     time: '27.06.2018 00:00',
-    team_a: 'Denmark',
-    team_b: 'France',
-  },
-  {
-    time: '27.06.2018 00:00',
     team_a: 'Australia',
     team_b: 'Peru',
   },
   {
-    time: '27.06.2018 04:00',
-    team_a: 'Iceland',
-    team_b: 'Croatia',
+    time: '27.06.2018 00:00',
+    team_a: 'Denmark',
+    team_b: 'France',
   },
   {
     time: '27.06.2018 04:00',
@@ -486,14 +481,19 @@ export const GAMES = [
     team_b: 'Argentina',
   },
   {
-    time: '28.06.2018 00:00',
-    team_a: 'Mexico',
-    team_b: 'Sweden',
+    time: '27.06.2018 04:00',
+    team_a: 'Iceland',
+    team_b: 'Croatia',
   },
   {
     time: '28.06.2018 00:00',
     team_a: 'Korea Republic',
     team_b: 'Germany',
+  },
+  {
+    time: '28.06.2018 00:00',
+    team_a: 'Mexico',
+    team_b: 'Sweden',
   },
   {
     time: '28.06.2018 04:00',
@@ -517,13 +517,13 @@ export const GAMES = [
   },
   {
     time: '29.06.2018 04:00',
-    team_a: 'Panama',
-    team_b: 'Tunisia',
+    team_a: 'England',
+    team_b: 'Belgium',
   },
   {
     time: '29.06.2018 04:00',
-    team_a: 'England',
-    team_b: 'Belgium',
+    team_a: 'Panama',
+    team_b: 'Tunisia',
   },
 ].map((game, i) => {
   return {

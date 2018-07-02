@@ -7,9 +7,15 @@ const POINTS_ROW = 3
 const PLAYERS_ANSWERS_START = 5
 const PLAYER_ID_COLUMN = 0
 
-const API = {
+const FOOTBALL_DATA_URL = 'https://api.football-data.org/v2/competitions/2000/matches'
+// const FOOTBALL_DATA_URL = 'https://api.football-data.org/v1/competitions/467/fixtures'
+
+// const BONUS_QUESTION_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRHBG6WOAtQqbfgjm5w_TIxa_LIRsh2mYbj8yqgkk7DKl2VhUZ1ZKbM2AoQ3y1njZ1yNJ4bqBMZDcjB/pub?output=csv' // dev
+const BONUS_QUESTION_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSB3qoqyFZRzaDL8v8a24j35IQjWCPYSpE2oJGNc4Q1b6gUNIrvuFio6KUXnXbv8J3vhyJWDMv1Aft8/pub?output=csv'
+const API                = {
   getGames: () => {
-    return fetch('https://api.football-data.org/v1/competitions/467/fixtures', {
+
+    return fetch(FOOTBALL_DATA_URL, {
       headers: {
         'x-auth-token': 'd889d405df01445dba932fe3d61d16b9',
       },
@@ -20,9 +26,7 @@ const API = {
       })
   },
   getAnswers: () => {
-    return fetch(
-      `https://docs.google.com/spreadsheets/d/e/2PACX-1vSB3qoqyFZRzaDL8v8a24j35IQjWCPYSpE2oJGNc4Q1b6gUNIrvuFio6KUXnXbv8J3vhyJWDMv1Aft8/pub?output=csv&cb=${Date.now()}`,
-    )
+    return fetch(`${BONUS_QUESTION_URL}&cb=${Date.now()}`)
       .then(response => response.text())
       .then(text => d3.csvParseRows(text))
       .then(data => {

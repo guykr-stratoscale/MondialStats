@@ -13,7 +13,9 @@ class Games extends Component {
   componentDidMount() {
     const { games = List() } = this.props
     const game =
-      games.find(g => g.status === 'IN_PLAY') || games.find(g => g.date.toDate() > new Date())
+            games.findLast(g => g.status === 'IN_PLAY') ||
+            games.findLast(g => g.status === 'FINISHED')
+
     if (game) {
       scrollToComponent(this.game_refs[game.id], { duration: 10 })
     }
