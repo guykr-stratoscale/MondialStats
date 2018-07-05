@@ -38,10 +38,11 @@ class Player extends Record({
 
     const winner_bet = bet.winner !== null
     if (winner_bet) {
-      score =
+      score +=
         (bet.winner === game_winner ? 4 : 0) *
         (is_team_a_winner ? game.team_a_factor : game.team_b_factor)
-    } else {
+    }
+    if (!isNaN(bet.team_a_score) && !isNaN(bet.team_a_score)) {
       const toto_points =
         (is_game_draw && is_bet_draw) ||
         (is_team_a_winner && bet.team_a_score > bet.team_b_score) ||
@@ -61,7 +62,7 @@ class Player extends Record({
               ? game.team_b_factor
               : 1
 
-        score = (toto_points + goals_points) * factor
+        score += (toto_points + goals_points) * factor
       }
     }
 
