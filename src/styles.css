@@ -242,6 +242,9 @@ h2 {
   margin: 5px;
   vertical-align: top;
 }
+.mobile .bets-card {
+  display: block;
+}
 
 .bets-card .ant-card-head-title {
   font-size: 12px;
@@ -262,9 +265,7 @@ h2 {
   display: table-cell;
   width: 100px;
 }
-.mobile .bet-wrapper .player-name {
-  width: 75px;
-}
+
 .bet-wrapper .bet {
   display: table-cell;
 }
@@ -276,7 +277,14 @@ h2 {
 .player-bets .bet {
   width: 220px;
 }
-
+.bet .winner {
+  font-size: 10px;
+  padding-right: 3px;
+}
+.bet .winner .team .name {
+  font-size: 10px;
+  padding-right: 2px;
+}
 .game-odds {
   position: relative;
   width: calc(100% + 50px);

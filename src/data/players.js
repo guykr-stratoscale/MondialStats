@@ -3361,6 +3361,24 @@ const querter_finals_bets = [
     'game|3|winner': 'Russia',
     'Email Address': 'Bhecht@gmail.com',
   },
+  {
+    Timestamp: '7/6/2018 0:50:38',
+    ID: 3,
+    שם: 'ariel',
+    'game|0|team_a_score': 1,
+    'game|0|team_b_score': 3,
+    'game|0|winner': 'France',
+    'game|1|team_a_score': 1,
+    'game|1|team_b_score': 2,
+    'game|1|winner': 'Brazil',
+    'game|2|team_a_score': 2,
+    'game|2|team_b_score': 2,
+    'game|2|winner': 'Sweden',
+    'game|3|team_a_score': 2,
+    'game|3|team_b_score': 4,
+    'game|3|winner': 'Croatia',
+    'Email Address': 'ariellowi@gmail.com',
+  },
 ]
 
 export default PLAYERS.map(fixGameOrder)

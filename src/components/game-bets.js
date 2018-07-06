@@ -65,10 +65,10 @@ function BetsCard({ bets, players, team }) {
 function GameBets({ game, players, teams }) {
   const bets = players.map(p => p.bets.get(game.id))
   const team_a_bets = bets.filter(
-    bet => bet.team_a_score > bet.team_b_score || bet.winner === game.team_a,
+    bet => (bet.scored() ? bet.team_a_score > bet.team_b_score : bet.winner === game.team_a),
   )
   const team_b_bets = bets.filter(
-    bet => bet.team_a_score < bet.team_b_score || bet.winner === game.team_b,
+    bet => (bet.scored() ? bet.team_a_score < bet.team_b_score : bet.winner === game.team_b),
   )
   const draw_bets = bets.filter(bet => bet.team_a_score === bet.team_b_score)
 

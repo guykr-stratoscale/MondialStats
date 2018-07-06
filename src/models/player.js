@@ -1,14 +1,18 @@
 import { Record, List, fromJS } from 'immutable'
 import PLAYERS from '../data/players'
 
-const Bet = Record({
+class Bet extends Record({
   player: null,
   game: 0,
   team_a_score: 0,
   team_b_score: 0,
   winner: null,
   answers: List(),
-})
+}) {
+  scored() {
+    return !isNaN(this.team_a_score) && !isNaN(this.team_a_score)
+  }
+}
 
 class Player extends Record({
   id: 0,

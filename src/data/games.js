@@ -274,6 +274,26 @@ export const FACTORS = [
     team_b: 2.7,
     team_a: 2.5,
   },
+  {
+    team_b: 2.1,
+    team_a: 3.0,
+    draw: 4.0,
+  },
+  {
+    team_b: 3.3,
+    team_a: 1.95,
+    draw: 3.5,
+  },
+  {
+    team_b: 3.4,
+    team_a: 4.7,
+    draw: 1.8,
+  },
+  {
+    team_b: 2.2,
+    team_a: 2.8,
+    draw: 3.9,
+  },
 ]
 
 export const GAMES = [
