@@ -15,8 +15,10 @@ function Bet({ games = List(), teams = List(), bet, decorate = false, showTeams 
         <Team team={team_a} className={cn({ winner: bet.team_a_score > bet.team_b_score })} />
       )}
       {bet.scored() && (
-        <span dir="ltr">
-          {bet.team_a_score} : {bet.team_b_score}
+        <span>
+          <span className="score" dir="ltr">
+            {bet.team_a_score} : {bet.team_b_score}
+          </span>
           {bet.winner &&
             bet.team_a_score === bet.team_b_score && (
               <span className="winner">
