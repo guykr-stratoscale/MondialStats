@@ -33,8 +33,10 @@ class BetsPage extends Component {
         p.bets.reduce(
           (result, bet) => {
             const game = this.props.games.get(bet.game)
-            result.risk += Math.round(p.betRisk(bet, game))
-            result.goals += bet.team_a_score + bet.team_b_score
+            if (game) {
+              result.risk += Math.round(p.betRisk(bet, game))
+              result.goals += bet.scored() ? bet.team_a_score + bet.team_b_score : 0
+            }
             return result
           },
           { risk: 0, goals: 0, name: p.name, id: p.id },
