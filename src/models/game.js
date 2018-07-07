@@ -9,6 +9,8 @@ class Game extends Record({
   team_b: null,
   team_a_score: '?',
   team_b_score: '?',
+  team_a_score_90m: '?',
+  team_b_score_90m: '?',
   team_a_factor: 1,
   team_b_factor: 1,
   draw_factor: 1,
@@ -82,6 +84,8 @@ export const gamesAdaptor = (games, data) => {
           game.status = d.status
           game.team_a_score = d.score.fullTime.homeTeam === null ? '?' : d.score.fullTime.homeTeam
           game.team_b_score = d.score.fullTime.awayTeam === null ? '?' : d.score.fullTime.awayTeam
+          game.team_a_score_90m = game.team_a_score
+          game.team_b_score_90m = game.team_b_score
           if (d.score.extraTime.homeTeam !== null) {
             game.team_a_score = d.score.extraTime.homeTeam
             game.team_b_score = d.score.extraTime.awayTeam

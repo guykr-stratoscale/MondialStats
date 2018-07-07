@@ -33,7 +33,7 @@ class Player extends Record({
       return score
     }
 
-    const is_game_draw = game.team_a_score === game.team_b_score
+    const is_90m_game_draw = game.team_a_score_90m === game.team_b_score_90m
     const is_team_a_winner = game.team_a_score > game.team_b_score
     const is_team_b_winner = game.team_a_score < game.team_b_score
     const game_winner = is_team_a_winner ? game.team_a : is_team_b_winner ? game.team_b : null
@@ -48,17 +48,19 @@ class Player extends Record({
     }
     if (bet.scored()) {
       const toto_points =
-        (is_game_draw && is_bet_draw) ||
-        (is_team_a_winner && bet.team_a_score > bet.team_b_score) ||
-        (is_team_b_winner && bet.team_b_score > bet.team_a_score)
+        (is_90m_game_draw && is_bet_draw) ||
+        (!is_90m_game_draw && is_team_a_winner && bet.team_a_score > bet.team_b_score) ||
+        (!is_90m_game_draw && is_team_b_winner && bet.team_b_score > bet.team_a_score)
           ? 2
           : 0
 
       if (toto_points) {
         const goals_points =
-          game.team_a_score === bet.team_a_score && game.team_b_score === bet.team_b_score ? 1 : 0
+          game.team_a_score_90m === bet.team_a_score && game.team_b_score_90m === bet.team_b_score
+            ? 1
+            : 0
 
-        const factor = is_game_draw
+        const factor = is_90m_game_draw
           ? game.draw_factor
           : is_team_a_winner
             ? game.team_a_factor
