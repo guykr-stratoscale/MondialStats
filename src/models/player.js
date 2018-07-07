@@ -12,6 +12,9 @@ class Bet extends Record({
   scored() {
     return !isNaN(this.team_a_score) && !isNaN(this.team_a_score)
   }
+  hasWinner() {
+    return this.winner !== null
+  }
 }
 
 class Player extends Record({
@@ -106,7 +109,7 @@ class Player extends Record({
     if (!bet) {
       return false
     }
-    return game.team_a_score === bet.team_a_score && game.team_b_score === bet.team_b_score
+    return game.team_a_score_90m === bet.team_a_score && game.team_b_score_90m === bet.team_b_score
   }
   isBonusSuccess(game) {
     const bet = this.bets.get(game.id)
@@ -116,6 +119,18 @@ class Player extends Record({
         result = true
       }
     })
+    return result
+  }
+  isWinnerSuccess(game) {
+    const bet = this.bets.get(game.id)
+    if (!bet) {
+      return false
+    }
+
+    let result = false
+    if (bet.hasWinner()) {
+      result = game.getWinner() === bet.winner
+    }
     return result
   }
 }

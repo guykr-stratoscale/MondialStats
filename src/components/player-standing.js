@@ -24,6 +24,7 @@ class PlayerStanding extends Component {
       lastScore = null,
       isGoalsSuccess = false,
       isBonusSuccess = false,
+      isWinnerSuccess = false,
     } = this.props
 
     const success = score > lastScore
@@ -43,6 +44,11 @@ class PlayerStanding extends Component {
           {isGoalsSuccess && (
             <span role="img" aria-label="goal-success" className="anticon unicode-icon">
               ⚽
+            </span>
+          )}
+          {isWinnerSuccess && (
+            <span role="img" aria-label="goal-success" className="anticon unicode-icon">
+              🏆
             </span>
           )}
           {isBonusSuccess && <Icon type="question-circle" />}

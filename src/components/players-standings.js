@@ -32,6 +32,7 @@ function PlayerStandings({ players, getScoredGames }) {
               standingChange={standingChange}
               isGoalsSuccess={p.isGoalsSuccess(playedGames.last())}
               isBonusSuccess={p.isBonusSuccess(playedGames.last())}
+              isWinnerSuccess={p.isWinnerSuccess(playedGames.last())}
             />
           )
         })}
