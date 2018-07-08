@@ -76,8 +76,12 @@ class Player extends Record({
     }
 
     game.questions.forEach((q, i) => {
-      if (game.answers.get(i) === bet.answers.get(i)) {
+      const game_answer = game.answers.get(i)
+      if (game_answer === bet.answers.get(i)) {
         score += q
+      }
+      if (game_answer === '*') {
+        score += Number(bet.answers.get(i))
       }
     })
 
@@ -116,6 +120,9 @@ class Player extends Record({
     let result = false
     game.questions.forEach((q, i) => {
       if (game.answers.get(i) === bet.answers.get(i)) {
+        result = true
+      }
+      if (game.answers.get(i) === '*' && Number(bet.answers.get(i)) > 0) {
         result = true
       }
     })
