@@ -27,9 +27,10 @@ class PlayerStanding extends Component {
       isWinnerSuccess = false,
     } = this.props
 
-    const success = score > lastScore
+    const success      = score > lastScore
+    const score_change = score !== lastScore
     return (
-      <li className={cn('player-standing', { success })} key={player.id}>
+      <li className={cn('player-standing', { success, failure: score_change && !success })} key={player.id}>
         <span>{standing}.</span>
         <span className="ball" style={{ background: playerColor(player.id) }} />
         <span className={cn('name')}>{player.name}</span>
@@ -37,7 +38,7 @@ class PlayerStanding extends Component {
         {score !== null && (
           <span className="score">
             {score.toFixed(1)}{' '}
-            {success && <span className="score-change"> + {(score - lastScore).toFixed(1)}</span>}
+            {score_change && <span className={cn('score-change')}> {Math.abs(score - lastScore).toFixed(1)} {success ? '+' : '-'}</span>}
           </span>
         )}
         <span className="icons">

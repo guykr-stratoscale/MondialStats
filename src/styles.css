@@ -434,7 +434,13 @@ h2 {
   color: green;
   font-weight: bold;
 }
-.player-standing.success .score .score-change {
+
+.player-standing.failure .score {
+  color: red;
+  font-weight: bold;
+}
+
+.player-standing .score .score-change {
   font-size: 10px;
   font-weight: normal;
 }
