@@ -22,8 +22,8 @@ const assignFormBets = game_bets => (p, i) => {
   return { ...p, bets }
 }
 
-const assignQFBets = game_bets => (p, i) => {
-  const qf_start = 56
+const assignOffsetBets = offset => game_bets => (p, i) => {
+  // const offset = 56
   const bets = p.bets
   const player_bets = game_bets.find(bet => bet.ID === i)
   if (player_bets) {
@@ -31,7 +31,7 @@ const assignQFBets = game_bets => (p, i) => {
       .filter(([key, val]) => key.startsWith('game'))
       .forEach(([key, value]) => {
         const [_, index, k] = key.split('|')
-        const game_index = qf_start + Number(index)
+        const game_index = offset + Number(index)
 
         if (!bets[game_index]) {
           bets[game_index] = {}
@@ -3381,10 +3381,157 @@ const querter_finals_bets = [
   },
 ]
 
+const semi_finals_bets = [
+  {
+    Timestamp: '7/9/2018 23:47:34',
+    'Email Address': 'guykrem@gmail.com',
+    ID: 0,
+    שם: 'קרמני',
+    'game|0|team_a_score': 2,
+    'game|0|team_b_score': 1,
+    'game|0|winner': 'France',
+    'game|1|team_a_score': 2,
+    'game|1|team_b_score': 1,
+    'game|1|winner': 'Croatia',
+  },
+  {
+    Timestamp: '7/9/2018 21:39:49',
+    'Email Address': 'galilamitai@gmail.com',
+    ID: 1,
+    שם: 'גליל',
+    'game|0|team_a_score': 1,
+    'game|0|team_b_score': 1,
+    'game|0|winner': 'France',
+    'game|1|team_a_score': 1,
+    'game|1|team_b_score': 1,
+    'game|1|winner': 'England',
+  },
+  {
+    Timestamp: '7/9/2018 16:36:00',
+    'Email Address': 'itzikyo@gmail.com',
+    ID: 2,
+    שם: 'Itzig',
+    'game|0|team_a_score': 2,
+    'game|0|team_b_score': 1,
+    'game|0|winner': 'France',
+    'game|1|team_a_score': 1,
+    'game|1|team_b_score': 0,
+    'game|1|winner': 'Croatia',
+  },
+  {
+    Timestamp: '7/9/2018 22:57:43',
+    'Email Address': 'ariellowi@gmail.com',
+    ID: 3,
+    שם: 'שריקי',
+    'game|0|team_a_score': 2,
+    'game|0|team_b_score': 1,
+    'game|0|winner': 'France',
+    'game|1|team_a_score': 2,
+    'game|1|team_b_score': 2,
+    'game|1|winner': 'Croatia',
+  },
+  {
+    Timestamp: '7/9/2018 18:59:28',
+    'Email Address': 'itamarshai76@gmail.com',
+    ID: 4,
+    שם: 'Itamar',
+    'game|0|team_a_score': 1,
+    'game|0|team_b_score': 2,
+    'game|0|winner': 'Belgium',
+    'game|1|team_a_score': 1,
+    'game|1|team_b_score': 1,
+    'game|1|winner': 'England',
+  },
+  {
+    Timestamp: '7/9/2018 14:16:22',
+    'Email Address': 'fogelson@hotmail.com',
+    ID: 5,
+    שם: 'פוגל',
+    'game|0|team_a_score': 1,
+    'game|0|team_b_score': 2,
+    'game|0|winner': 'Belgium',
+    'game|1|team_a_score': 1,
+    'game|1|team_b_score': 1,
+    'game|1|winner': 'England',
+  },
+  {
+    Timestamp: '7/9/2018 23:45:17',
+    'Email Address': 'yonelf@gmail.com',
+    ID: 6,
+    שם: 'יוני',
+    'game|0|team_a_score': 3,
+    'game|0|team_b_score': 1,
+    'game|0|winner': 'France',
+    'game|1|team_a_score': 2,
+    'game|1|team_b_score': 1,
+    'game|1|winner': 'Croatia',
+  },
+  {
+    Timestamp: '7/8/2018 15:00:26',
+    'Email Address': 'yshalitin@yahoo.com',
+    ID: 7,
+    שם: 'ישקה',
+    'game|0|team_a_score': 1,
+    'game|0|team_b_score': 2,
+    'game|0|winner': 'Belgium',
+    'game|1|team_a_score': 1,
+    'game|1|team_b_score': 1,
+    'game|1|winner': 'Croatia',
+  },
+  {
+    Timestamp: '7/8/2018 14:29:22',
+    'Email Address': 'eranronit@gmail.com',
+    ID: 8,
+    שם: 'eranronit@gmail.com',
+    'game|0|team_a_score': 3,
+    'game|0|team_b_score': 1,
+    'game|0|winner': 'France',
+    'game|1|team_a_score': 2,
+    'game|1|team_b_score': 2,
+    'game|1|winner': 'England',
+  },
+  {
+    Timestamp: '7/8/2018 15:13:40',
+    'Email Address': 'eranspiegel@gmail.com',
+    ID: 9,
+    שם: 'Eranspiegel',
+    'game|0|team_a_score': 1,
+    'game|0|team_b_score': 1,
+    'game|0|winner': 'France',
+    'game|1|team_a_score': 2,
+    'game|1|team_b_score': 1,
+    'game|1|winner': 'Croatia',
+  },
+  {
+    Timestamp: '7/9/2018 23:54:42',
+    'Email Address': 'moshesadoun@gmail.com',
+    ID: 11,
+    שם: 'מושון',
+    'game|0|team_a_score': 3,
+    'game|0|team_b_score': 2,
+    'game|0|winner': 'France',
+    'game|1|team_a_score': 1,
+    'game|1|team_b_score': 3,
+    'game|1|winner': 'England',
+  },
+  {
+    Timestamp: '7/8/2018 15:23:36',
+    'Email Address': 'Bhecht@gmail.com',
+    ID: 12,
+    שם: 'ברק הכט',
+    'game|0|team_a_score': 2,
+    'game|0|team_b_score': 0,
+    'game|0|winner': 'France',
+    'game|1|team_a_score': 1,
+    'game|1|team_b_score': 1,
+    'game|1|winner': 'England',
+  },
+]
 export default PLAYERS.map(fixGameOrder)
   .map(assignBets(game_11_guesses, 10))
   .map(assignBets(game_16_answers, 15))
   .map(assignFormBets(round_16_bets))
-  .map(assignQFBets(querter_finals_bets))
+  .map(assignOffsetBets(56)(querter_finals_bets))
+  .map(assignOffsetBets(60)(semi_finals_bets))
 
 export const playerColor = d3.scaleSequential(d3.interpolateSinebow).domain([0, PLAYERS.length])
