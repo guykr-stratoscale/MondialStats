@@ -3526,6 +3526,18 @@ const semi_finals_bets = [
     'game|1|team_b_score': 1,
     'game|1|winner': 'England',
   },
+  {
+    Timestamp: '7/8/2018 15:23:36',
+    'Email Address': 'atziz@gmail.com',
+    ID: 10,
+    שם: 'dr atziz',
+    'game|0|team_a_score': 2,
+    'game|0|team_b_score': 1,
+    'game|0|winner': 'France',
+    'game|1|team_a_score': 2,
+    'game|1|team_b_score': 2,
+    'game|1|winner': 'England',
+  },
 ]
 export default PLAYERS.map(fixGameOrder)
   .map(assignBets(game_11_guesses, 10))
