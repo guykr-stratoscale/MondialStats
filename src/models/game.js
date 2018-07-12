@@ -62,7 +62,7 @@ export const initGames = () => {
 
 // TODO: add factors here
 
-const nullOr = (value, ifNull) => value === null ? ifNull : value
+const ifNull = (value, ifNull) => (value === null ? ifNull : value)
 
 export const gamesAdaptor = (games, data) => {
   return (
@@ -84,38 +84,28 @@ export const gamesAdaptor = (games, data) => {
         )
         return game.withMutations(game => {
           // game.status       = [34, 35].includes(i) ? 'IN_PLAY' : d.status
-          game.status = d.status
-          switch (d.score.duration) {
-            case 'REGULAR': {
-              game.team_a_score     = nullOr(d.score.fullTime.homeTeam, '?')
-              game.team_b_score     = nullOr(d.score.fullTime.awayTeam, '?')
-              game.team_a_score_90m = nullOr(game.team_a_score, '?')
-              game.team_b_score_90m = nullOr(game.team_b_score, '?')
-              break
-            }
-            case 'EXTRA_TIME': {
-              game.team_a_score     = nullOr(d.score.fullTime.homeTeam, '?')
-              game.team_b_score     = nullOr(d.score.fullTime.awayTeam, '?')
-              game.team_a_score_90m = nullOr(Math.max(d.score.extraTime.homeTeam, d.score.extraTime.awayTeam), '?')
-              game.team_b_score_90m = nullOr(game.team_a_score_90m, '?')
-              break
-            }
-            case 'PENALTY_SHOOTOUT': {
-              if (d.score.fullTime.homeTeam < d.score.extraTime.homeTeam) {
-                game.team_a_score_90m = nullOr(d.score.fullTime.homeTeam, '?')
-                game.team_b_score_90m = nullOr(d.score.fullTime.awayTeam, '?')
-              } else {
-                game.team_a_score_90m = nullOr(d.score.extraTime.homeTeam, '?')
-                game.team_b_score_90m = nullOr(d.score.extraTime.awayTeam, '?')
-              }
-              game.team_a_score = nullOr(d.score.penalties.homeTeam, '?')
-              game.team_b_score = nullOr(d.score.penalties.awayTeam, '?')
-              break
-            }
+
+          const {
+            status,
+            homeTeam,
+            awayTeam,
+            score: { duration, fullTime, extraTime, penalties },
+          } = d
+
+          game.status = status
+
+          game.team_a_score = fullTime.homeTeam
+          game.team_b_score = fullTime.awayTeam
+          game.team_a_score_90m = game.team_a_score - ifNull(extraTime.homeTeam, 0)
+          game.team_b_score_90m = game.team_b_score - ifNull(extraTime.awayTeam, 0)
+
+          if (duration === 'PENALTY_SHOOTOUT') {
+            game.team_a_score = penalties.homeTeam
+            game.team_b_score = penalties.awayTeam
           }
 
-          const team_a = TEAMS.find(team => team.name === d.homeTeam.name) || {}
-          const team_b = TEAMS.find(team => team.name === d.awayTeam.name) || {}
+          const team_a = TEAMS.find(team => team.name === homeTeam.name) || {}
+          const team_b = TEAMS.find(team => team.name === awayTeam.name) || {}
           game.team_a = team_a.id
           game.team_b = team_b.id
         })
