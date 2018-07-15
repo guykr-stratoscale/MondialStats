@@ -73,14 +73,14 @@ export const FACTORS = [
     draw: 5.5,
   },
   {
-    team_b: 3.6,
-    team_a: 2.3,
-    draw: 3.3,
-  },
-  {
     team_b: 5.6,
     team_a: 1.85,
     draw: 3.7,
+  },
+  {
+    team_b: 3.6,
+    team_a: 2.3,
+    draw: 3.3,
   },
   {
     team_b: 4.6,
@@ -138,14 +138,14 @@ export const FACTORS = [
     draw: 5.8,
   },
   {
-    team_b: 7.5,
-    team_a: 1.55,
-    draw: 4.4,
-  },
-  {
     team_b: 2.05,
     team_a: 4.55,
     draw: 3.4,
+  },
+  {
+    team_b: 7.5,
+    team_a: 1.55,
+    draw: 4.4,
   },
   {
     team_b: 21,
@@ -183,24 +183,24 @@ export const FACTORS = [
     draw: 5,
   },
   {
-    team_b: 1.75,
-    team_a: 6,
-    draw: 3.8,
-  },
-  {
     team_b: 2.35,
     team_a: 3.6,
     draw: 3.5,
   },
   {
-    team_b: 1.9,
-    team_a: 5,
-    draw: 3.65,
+    team_b: 1.75,
+    team_a: 6,
+    draw: 3.8,
   },
   {
     team_b: 1.5,
     team_a: 8,
     draw: 4.5,
+  },
+  {
+    team_b: 1.9,
+    team_a: 5,
+    draw: 3.65,
   },
   {
     team_b: 1.3,
@@ -233,14 +233,14 @@ export const FACTORS = [
     draw: 3.4,
   },
   {
-    team_b: 2.35,
-    team_a: 3.55,
-    draw: 3.35,
-  },
-  {
     team_b: 2.6,
     team_a: 3,
     draw: 3.4,
+  },
+  {
+    team_b: 2.35,
+    team_a: 3.55,
+    draw: 3.35,
   },
   {
     team_b: 3.1,
