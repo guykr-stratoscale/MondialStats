@@ -256,7 +256,7 @@ export const FACTORS = [
   },
   {
     team_b: 4.9,
-    team_a: 1.95,
+    team_a: 1.85,
   },
   {
     team_b: 6.5,
